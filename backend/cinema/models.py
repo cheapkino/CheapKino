@@ -4,7 +4,7 @@ from movie.models import Movie
 
 
 class City(models.Model):
-    name = models.CharField(null=False)
+    name = models.CharField(max_length=99, null=False)
 
 
 class Cinema(models.Model):
@@ -14,18 +14,18 @@ class Cinema(models.Model):
 
 
 class Hall(models.Model):
-    name = models.CharField(null=False, max_length=99)
+    name = models.CharField(max_length=99, null=False)
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
 
 
 class Session(models.Model):
     # list of statuses for status field
-    STATUSES = ('PAST', 'CURRENT', 'FUTURE', 'CANCEL')
+    STATUSES = (('P', 'PAST'), ('C', 'CURRENT'), ('F', 'FUTURE'), ('C', 'CANCEL'))
 
     session_date = models.DateTimeField(null=False)
     price = models.IntegerField(null=False)
     price_student = models.IntegerField(null=True)
     price_child = models.IntegerField(null=True)
-    status = models.CharField(choices=STATUSES, default='FUTURE', null=False)
+    status = models.CharField(max_length=7, choices=STATUSES, default='FUTURE', null=False)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
