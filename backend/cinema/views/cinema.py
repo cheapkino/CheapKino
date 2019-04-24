@@ -3,10 +3,10 @@ from rest_framework.permissions import IsAuthenticated
 
 from cinema.models import Cinema
 
-from cinema.serializers import MovieSerializer
+from cinema.serializers import CinemaSerializer
 
 
-class CinemaView(generics.ListCreateAPIView):
+class CinemasView(generics.ListCreateAPIView):
 
     permission_classes = (IsAuthenticated, )
 
@@ -14,4 +14,15 @@ class CinemaView(generics.ListCreateAPIView):
         return Cinema.objects.all()
 
     def get_serializer_class(self):
-        return MovieSerializer
+        return CinemaSerializer
+
+
+class CinemaView(generics.RetrieveAPIView):
+
+    permission_classes = (IsAuthenticated, )
+
+    def get_queryset(self):
+        return Cinema.objects.all()
+
+    def get_serializer_class(self):
+        return CinemaSerializer

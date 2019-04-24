@@ -1,11 +1,10 @@
 from rest_framework import serializers
 
-from cinema.models import Movie
+from cinema.models import Cinema
 
 
-class MovieSerializer(serializers.ModelSerializer):
+class CinemaSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Movie
+        model = Cinema
         fields = '__all__'
-

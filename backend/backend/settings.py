@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # DRF
     'rest_framework',
     'rest_framework.authtoken',
+
+    # modules
     'cinema',
     'movie',
     'user',
@@ -105,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# default password hasher is BCrypt
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
