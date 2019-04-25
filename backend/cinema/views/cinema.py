@@ -1,5 +1,5 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 
 from cinema.models import Cinema
 
@@ -8,7 +8,7 @@ from cinema.serializers import CinemaSerializer
 
 class CinemasView(generics.ListCreateAPIView):
 
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Cinema.objects.all()
@@ -19,7 +19,7 @@ class CinemasView(generics.ListCreateAPIView):
 
 class CinemaView(generics.RetrieveAPIView):
 
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Cinema.objects.all()
