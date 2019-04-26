@@ -1,17 +1,32 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework import filters
 
 from cinema.models import Cinema
 
-from cinema.serializers import MovieSerializer
+from cinema.serializers import CinemaSerializer
 
 
-class CinemaView(generics.ListCreateAPIView):
+class CinemasView(generics.ListCreateAPIView):
 
-    permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.OrderingFilter, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+
+    ordering = ('name', )
 
     def get_queryset(self):
         return Cinema.objects.all()
 
     def get_serializer_class(self):
-        return MovieSerializer
+        return CinemaSerializer
+
+
+class CinemaView(generics.RetrieveAPIView):
+
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+
+    def get_queryset(self):
+        return Cinema.objects.all()
+
+    def get_serializer_class(self):
+        return CinemaSerializer

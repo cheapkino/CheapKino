@@ -17,8 +17,16 @@ class Movie(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
 
+class ReviewManager(models.Manager):
+    def for_user(self, user):
+        return self.filter(owner=user)
+
+
 class Review(models.Model):
     post_date = models.DateTimeField(null=True)
     text = models.CharField(max_length=999, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+    objects = ReviewManager()
+

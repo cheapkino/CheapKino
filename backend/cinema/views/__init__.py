@@ -1,1 +1,1 @@
-from .cinema import CinemaView
+from .cinema import CinemasView, CinemaView
