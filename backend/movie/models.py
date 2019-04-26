@@ -6,15 +6,21 @@ from django.contrib.auth.models import User
 class Genre(models.Model):
     name = models.CharField(max_length=99, null=False)
 
+    def __str__(self):
+        return self.name
+
 
 class Movie(models.Model):
     poster = models.CharField(max_length=99, null=False)
     title = models.CharField(max_length=99, null=False)
     description = models.CharField(max_length=99, null=False)
     premiere = models.DateField(null=True)
-    duration = models.IntegerField(null=False)
+    duration = models.IntegerField(null=True)
     rating = models.DecimalField(null=True, max_digits=4, decimal_places=2)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{} ({} out of 10)'.format(self.title, self.rating)
 
 
 class ReviewManager(models.Manager):

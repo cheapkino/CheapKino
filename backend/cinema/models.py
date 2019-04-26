@@ -10,26 +10,22 @@ class City(models.Model):
         verbose_name = 'City'
         verbose_name_plural = 'Cities'
 
+    def __str__(self):
+        return self.name
+
 
 class Cinema(models.Model):
     name = models.CharField(max_length=99, null=False)
     address = models.CharField(max_length=99, null=False)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Hall(models.Model):
     name = models.CharField(max_length=99, null=False)
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
 
-
-class Session(models.Model):
-    # list of statuses for status field
-    STATUSES = (('P', 'PAST'), ('C', 'CURRENT'), ('F', 'FUTURE'), ('C', 'CANCEL'))
-
-    session_date = models.DateTimeField(null=False)
-    price = models.IntegerField(null=False)
-    price_student = models.IntegerField(null=True)
-    price_child = models.IntegerField(null=True)
-    status = models.CharField(max_length=7, choices=STATUSES, default='FUTURE', null=False)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.cinema)

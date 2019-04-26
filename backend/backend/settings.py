@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'cinema',
     'movie',
     'user',
+    'session',
 ]
 
 MIDDLEWARE = [
