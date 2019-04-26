@@ -15,7 +15,7 @@ export interface Movie {
 }
 
 class Review {
-  postDate: Date;
+  post_date: Date;
   text: string;
   owner: User;
   movie: Movie;

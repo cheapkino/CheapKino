@@ -10,7 +10,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { MainComponent } from './components/main/main.component';
 import { MovieComponent } from './components/movie/movie.component';
 import {ProviderService} from './services/provider.service';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     ProviderService

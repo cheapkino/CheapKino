@@ -11,7 +11,7 @@ export class ProviderService extends MainService {
   }
 
   getMovies(): Promise<Movie[]> {
-      return this.get('http:/localhost:8000/movie/', {});
+      return this.get('http://localhost:8000/movie/', {});
   }
 
 }

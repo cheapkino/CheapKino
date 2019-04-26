@@ -16,10 +16,10 @@ export interface Hall {
 }
 
 export interface Session {
-  sessionDate: Date;
+  session_date: Date;
   price: number;
-  priceForStudent: number;
-  priceForChildren: number;
+  price_student: number;
+  price_child: number;
   status: string;
   movie: Movie;
   cinema: Cinema;
