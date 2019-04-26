@@ -1,0 +1,10 @@
+<div class="movie-container">
+  <div class="movie-image" >
+  </div>
+  <div class="movie-info" [ngStyle]= "background: url({{movie.poster}}) no-repeat center center">
+    <h5 class="movie-date">{{movie.premiere}}</h5>
+    <h2 class="movie-name">{{movie.title}}</h2>
+    <h4 class="movie-genre">{{movie.genre}}</h4>
+    <p class="movie-description">{{movie.description}}</p>
+  </div>
+</div>

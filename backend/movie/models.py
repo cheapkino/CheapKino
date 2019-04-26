@@ -11,8 +11,8 @@ class Movie(models.Model):
     poster = models.CharField(max_length=99, null=False)
     title = models.CharField(max_length=99, null=False)
     description = models.CharField(max_length=99, null=False)
-    premiere = models.DateField(null=True)
-    duration = models.IntegerField(null=False)
+    premiere = models.DateFideld(null=True)
+    c = models.IntegerField(null=False)
     rating = models.DecimalField(null=True, max_digits=4, decimal_places=2)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
