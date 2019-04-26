@@ -1,0 +1,5 @@
+@import url('./assets/vendor/reset.css');
+@import url('./assets/vendor/icomoon.css');
+body{
+  font-family: 'Fira Sans', sans-serif;
+}
