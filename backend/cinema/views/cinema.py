@@ -1,5 +1,6 @@
 from rest_framework import generics
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework import filters
 
 from cinema.models import Cinema
 
@@ -8,7 +9,10 @@ from cinema.serializers import CinemaSerializer
 
 class CinemasView(generics.ListCreateAPIView):
 
+    filter_backends = (filters.OrderingFilter, )
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+
+    ordering = ('name', )
 
     def get_queryset(self):
         return Cinema.objects.all()

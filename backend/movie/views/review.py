@@ -12,3 +12,6 @@ class ReviewsView(generics.ListCreateAPIView):
     def get_serializer_class(self):
         return ReviewSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+

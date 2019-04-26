@@ -2,6 +2,8 @@ from rest_framework import serializers
 
 from movie.models import Movie, Review
 
+from user.serializers import UserSerializer
+
 
 class MovieSerializer(serializers.ModelSerializer):
 
@@ -11,11 +13,9 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    owner = UserSerializer(read_only=True)
 
     class Meta:
         model = Review
-        fields = ('post_date', 'text', 'movie',)
-
-    def create(self, validated_data):
-        user =
+        fields = ('id', 'post_date', 'text', 'movie', 'owner', )
 
