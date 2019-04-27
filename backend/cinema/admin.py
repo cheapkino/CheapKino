@@ -1,7 +1,5 @@
 from django.contrib import admin
-from cinema.models import City, Cinema, Hall
-
-# admin.site.unregister(City)
+from cinema.models import City, Cinema, Hall, Row, Seat
 
 
 @admin.register(City)
@@ -17,3 +15,13 @@ class CinemaAdmin(admin.ModelAdmin):
 @admin.register(Hall)
 class HallAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'cinema', )
+
+
+@admin.register(Row)
+class RowAdmin(admin.ModelAdmin):
+    list_display = ('id', 'number', 'hall', )
+
+
+@admin.register(Seat)
+class RowAdmin(admin.ModelAdmin):
+    list_display = ('id', 'number', 'row', )

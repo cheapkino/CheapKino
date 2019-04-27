@@ -29,3 +29,19 @@ class Hall(models.Model):
 
     def __str__(self):
         return '{} ({})'.format(self.name, self.cinema)
+
+
+class Row(models.Model):
+    number = models.IntegerField()
+    hall = models.ForeignKey(Hall, on_delete=models.CASCADE, related_name='rows')
+
+    def __str__(self):
+        return str(self.number)
+
+
+class Seat(models.Model):
+    number = models.IntegerField()
+    row = models.ForeignKey(Row, on_delete=models.CASCADE, related_name='seats')
+
+    def __str__(self):
+        return str(self.number)
