@@ -10,7 +10,7 @@ export class ProviderService extends MainService {
     super(http);
   }
 
-  getMovies(): Promise<Movie[]> {
+  getMovies(): Promise<any> {
       return this.get('http://localhost:8000/movie/', {});
   }
 
