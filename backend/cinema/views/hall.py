@@ -12,4 +12,12 @@ class HallsView(generics.ListCreateAPIView):
     def get_serializer_class(self):
         return HallSerializer
 
-    # def perform_create(self, serializer):
+
+class HallView(generics.RetrieveUpdateDestroyAPIView):
+
+    def get_queryset(self):
+        return Hall.objects.filter(cinema=self.kwargs['pk2'], id=self.kwargs['pk'])
+
+    def get_serializer_class(self):
+        return HallSerializer
+

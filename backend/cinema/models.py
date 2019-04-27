@@ -25,7 +25,7 @@ class Cinema(models.Model):
 
 class Hall(models.Model):
     name = models.CharField(max_length=99, null=False)
-    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
+    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='halls')
 
     def __str__(self):
         return '{} ({})'.format(self.name, self.cinema)

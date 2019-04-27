@@ -11,3 +11,12 @@ class SessionsView(generics.ListCreateAPIView):
 
     def get_serializer_class(self):
         return SessionSerializer
+
+
+class SessionView(generics.RetrieveUpdateDestroyAPIView):
+
+    def get_queryset(self):
+        return Session.objects.all()
+
+    def get_serializer_class(self):
+        return SessionSerializer

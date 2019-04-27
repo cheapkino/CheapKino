@@ -46,3 +46,19 @@ class HallSerializer(serializers.ModelSerializer):
         hall.save()
 
         return hall
+
+
+class RowSerializer(serializers.ModelSerializer):
+    hall = HallSerializer(read_only=True)
+
+    class Meta:
+        model = Row
+        fields = '__all__'
+
+
+class SeatSerializer(serializers.ModelSerializer):
+    row = RowSerializer(read_only=True)
+
+    class Meta:
+        model = Seat
+        fields = '__all__'

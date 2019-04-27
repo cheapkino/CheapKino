@@ -5,7 +5,7 @@ from .models import Session, SeatReserve
 
 @admin.register(Session)
 class SessionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'date', 'price', 'status', 'movie', 'cinema', )
+    list_display = ('id', 'date', 'price', 'status', 'movie', 'hall', )
 
 
 @admin.register(SeatReserve)

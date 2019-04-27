@@ -17,15 +17,15 @@ class Session(models.Model):
     price_child = models.IntegerField(null=True)
     status = models.CharField(max_length=7, choices=STATUSES, default='FUTURE', null=False)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='sessions')
-    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='sessions')
+    hall = models.ForeignKey(Hall, on_delete=models.CASCADE, related_name='sessions', default=1)
 
     def __str__(self):
-        return '{} at {} on {}'.format(self.movie, self.cinema, self.date)
+        return '{} at {} on {}'.format(self.movie, self.hall, self.date)
 
 
 class SeatReserve(models.Model):
     seat = models.ForeignKey(Seat, on_delete=models.CASCADE, related_name='reserved')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='seats')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='seats', null=True, default=None)
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='seats')
 
     class Meta:
@@ -33,4 +33,4 @@ class SeatReserve(models.Model):
         verbose_name_plural = 'Seats (reserved)'
 
     def __str__(self):
-        return '{} {}'.format(self.seat, self.user)
+        return '{} seat for {}'.format(self.seat, self.user)
