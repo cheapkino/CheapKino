@@ -13,7 +13,7 @@ class Genre(models.Model):
 class Movie(models.Model):
     poster = models.CharField(max_length=99, null=False)
     title = models.CharField(max_length=99, null=False)
-    description = models.CharField(max_length=99, null=False)
+    description = models.CharField(max_length=255, null=False)
     premiere = models.DateField(null=True)
     duration = models.IntegerField(null=True)
     rating = models.DecimalField(null=True, max_digits=4, decimal_places=2)
