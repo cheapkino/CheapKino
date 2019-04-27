@@ -4,7 +4,15 @@ import { MainComponent} from './components/main/main.component';
 
 
 const routes: Routes = [
-  { path: '' , component: MainComponent}
+  { path: '' ,
+    component: MainComponent
+    // children: [
+    //   {
+    //     path: 'movies',
+    //     component: '',
+    //   }
+    // ]
+  }
 ];
 
 @NgModule({
