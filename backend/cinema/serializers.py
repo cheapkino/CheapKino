@@ -32,8 +32,8 @@ class CinemaSerializer(serializers.ModelSerializer):
 class HallSerializer(serializers.ModelSerializer):
     cinema = CinemaSerializer(read_only=True)
     cinema_id = serializers.IntegerField(write_only=True)
-    width = serializers.IntegerField(write_only=True)
-    length = serializers.IntegerField(write_only=True)
+    width = serializers.IntegerField()
+    length = serializers.IntegerField()
 
     class Meta:
         model = Hall
