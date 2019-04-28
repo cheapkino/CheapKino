@@ -10,13 +10,11 @@ import {ProviderService} from '../../services/provider.service';
 export class MainComponent implements OnInit {
   public movies: Movie[] = [];
   public movieTop: Movie[] = [];
-
   constructor(private provider: ProviderService) { }
 
   ngOnInit() {
       this.provider.getMovies().then( res =>  {
         this.movies = res.results; // With pagination it will be res.result
-        console.log(this.movies);
       });
   }
 

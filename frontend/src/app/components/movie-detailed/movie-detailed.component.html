@@ -1,0 +1,21 @@
+<div class="movie-detailed">
+  <div class="movie-detailed__img" [style.background-image] = "image">
+    <div class="movie-image-gradient"></div>
+  </div>
+  <div class="movie-detailed-info">
+    <div class="movie-detailed-left">
+      <ul class = "movie-details">
+        <li><span class="green">Название: </span>{{movie.title}}</li>
+        <li><span class="green">Рейтинг: </span>{{movie.rating}}</li>
+        <li><span class="green">Дата выхода: </span>{{movie.premiere}}</li>
+        <li><span class="green">Основной жанр: </span> {{movie.genre.name}}</li>
+        <li><span class="green">Продолжительность: </span>{{movie.duration}} минут</li>
+      </ul>
+    </div>
+    <div class="movie-detailed-right">
+      <h1 class="movie-detailed-right__title">Cюжет</h1>
+      <p class="movie-detailed-right__description">{{movie.description}}</p>
+      <button class="movie-detailed-right__sessions">Подобрать сеанс</button>
+    </div>
+  </div>
+</div>

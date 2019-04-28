@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,6 +10,8 @@ import { MainComponent } from './components/main/main.component';
 import { MovieComponent } from './components/movie/movie.component';
 import {ProviderService} from './services/provider.service';
 import {HttpClientModule} from '@angular/common/http';
+import { MovieDetailedComponent } from './components/movie-detailed/movie-detailed.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import {HttpClientModule} from '@angular/common/http';
     LoginComponent,
     SignUpComponent,
     MainComponent,
-    MovieComponent
+    MovieComponent,
+    MovieDetailedComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,

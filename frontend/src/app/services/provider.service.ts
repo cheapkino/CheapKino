@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProviderService extends MainService {
+  public detailedMovie: Movie;
   constructor(http: HttpClient) {
     super(http);
   }
@@ -14,4 +15,11 @@ export class ProviderService extends MainService {
       return this.get('http://localhost:8000/movie/', {});
   }
 
+  setDetailedMovie(movie: Movie) {
+    this.detailedMovie = movie;
+  }
+
+  getDetailedMovie(): Movie {
+    return this.detailedMovie;
+  }
 }
