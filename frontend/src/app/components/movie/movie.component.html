@@ -7,6 +7,6 @@
       <h4 class="movie-genre">{{movie.genre.name}}</h4>
     </div>
     <p class="movie-description">{{movie.description}}</p>
-    <a href="#" class="movie-session-link">Подобрать кинотеатр и время</a>
+    <a routerLink="movieSessions" class="movie-session-link" (click) = "setMovieForSessions(movie)" >Подобрать кинотеатр и время</a>
   </div>
 </div>

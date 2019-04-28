@@ -12,6 +12,9 @@ import {ProviderService} from './services/provider.service';
 import {HttpClientModule} from '@angular/common/http';
 import { MovieDetailedComponent } from './components/movie-detailed/movie-detailed.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { SessionsComponent } from './components/sessions/sessions.component';
+import { CinemaComponent } from './components/cinema/cinema.component';
+import { SessionsByCinemaComponent } from './components/sessions-by-cinema/sessions-by-cinema.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     MainComponent,
     MovieComponent,
     MovieDetailedComponent,
-    MovieListComponent
+    MovieListComponent,
+    SessionsComponent,
+    CinemaComponent,
+    SessionsByCinemaComponent
   ],
   imports: [
     BrowserModule,

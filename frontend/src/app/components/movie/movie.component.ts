@@ -23,4 +23,7 @@ export class MovieComponent implements OnInit {
     this.provider.setDetailedMovie(movie);
   }
 
+  setMovieForSessions(movie: Movie) {
+    this.provider.setMovieForSession(movie);
+  }
 }

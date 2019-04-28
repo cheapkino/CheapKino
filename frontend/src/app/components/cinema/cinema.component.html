@@ -1,0 +1,12 @@
+<div class="cinemaComponent">
+  <div class="cinemaRow">
+    <div class="cinemaName bordered green">Кинотеатр</div>
+    <div class="cinemaAddress bordered  green">Адрес</div>
+    <div class="cinemaCity bordered  green">Город</div>
+  </div>
+  <div class="cinemaRow" *ngFor="let cinema of cinemas">
+    <div class="cinemaName bordered"><a  class="cinemaSessions" (click)="setCinemaForSessions(cinema)" routerLink="/sessionsForCinema">{{cinema.name}}</a></div>
+    <div class="cinemaAddress bordered">{{cinema.address}}</div>
+    <div class="cinemaCity bordered">{{cinema.city.name}}</div>
+  </div>
+</div>

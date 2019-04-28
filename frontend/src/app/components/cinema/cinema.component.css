@@ -1,0 +1,38 @@
+.cinemaComponent{
+  width: 100%;
+  color: #FFF;
+  background: #232525;
+  border: 1px solid #a2dc4d;
+}
+.cinemaRow{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bordered{
+  border: 1px solid #a2dc4d;
+  min-height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.green{
+  color: #a2dc4d;
+  font-size: 24px;
+}
+
+.cinemaSessions{
+  text-decoration: none;
+  color: #FFF;
+}
+
+.cinemaSessions:visited{
+  text-decoration: none;
+  color: #FFF;
+}
+
+.cinemaSessions:hover{
+  color: #a2dc4d;
+}
