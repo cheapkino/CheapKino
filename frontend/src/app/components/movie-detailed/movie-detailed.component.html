@@ -1,7 +1,5 @@
 <div class="movie-detailed">
-  <div class="movie-detailed__img" [style.background-image] = "image">
-    <div class="movie-image-gradient"></div>
-  </div>
+  <img class="movie-detailed__img" src= "{{movie.poster}}" />
   <div class="movie-detailed-info">
     <div class="movie-detailed-left">
       <ul class = "movie-details">
@@ -15,7 +13,7 @@
     <div class="movie-detailed-right">
       <h1 class="movie-detailed-right__title">Cюжет</h1>
       <p class="movie-detailed-right__description">{{movie.description}}</p>
-      <button class="movie-detailed-right__sessions">Подобрать сеанс</button>
+      <button class="movie-detailed-right__sessions" (click)="loadSessionPage()">Подобрать сеанс</button>
     </div>
   </div>
 </div>

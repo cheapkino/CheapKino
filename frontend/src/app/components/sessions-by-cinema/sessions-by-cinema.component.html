@@ -1,0 +1,23 @@
+<div class="sessionsContainer">
+  <div class = "CinemaName">{{cinema.name}}</div>
+  <div class="sessionsComponent">
+    <div class="sessionDetails columnHeader">
+      <div class = "columns">Фильм</div>
+      <div class = "columns">Зал</div>
+      <div class = "columns">Статус</div>
+      <div class = "columns">Время</div>
+      <div class = "columns">Детям</div>
+      <div class = "columns">Студентам</div>
+      <div class = "columns">Взрослым</div>
+    </div>
+    <div class="sessionDetails" *ngFor="let session of sessions">
+      <div class = "columns">{{session.movie.title}}</div>
+      <div class = "columns">{{session.hall.name}}</div>
+      <div class = "columns">{{session.status}}</div>
+      <div class = "columns">{{getTimeOfSession(session)}}</div>
+      <div class = "columns">{{session.price_child}}</div>
+      <div class = "columns">{{session.price_student}}</div>
+      <div class = "columns">{{session.price}}</div>
+    </div>
+  </div>
+</div>

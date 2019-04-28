@@ -22,4 +22,9 @@ export class MovieDetailedComponent implements OnInit {
     }
   }
 
+  loadSessionPage() {
+    this.router.navigateByUrl('movieSessions');
+    this.provider.setMovieForSession(this.movie);
+  }
+
 }
