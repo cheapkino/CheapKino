@@ -9,9 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
 
     encoder = BCryptSHA256PasswordHasher()
 
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
-        fields = ('id', 'username', 'groups', 'is_superuser')
+        fields = ('id', 'username', 'groups', 'is_superuser', 'password', )
 
     def create(self, validated_data):
         # pop and encode password
