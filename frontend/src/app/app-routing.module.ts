@@ -6,6 +6,8 @@ import {MovieListComponent} from './components/movie-list/movie-list.component';
 import {SessionsComponent} from './components/sessions/sessions.component';
 import {CinemaComponent} from './components/cinema/cinema.component';
 import {SessionsByCinemaComponent} from './components/sessions-by-cinema/sessions-by-cinema.component';
+import {ModalComponent} from './components/modal/modal.component';
+import {LoginComponent} from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -31,6 +33,14 @@ const routes: Routes = [
       {
         path: 'sessionsForCinema',
         component: SessionsByCinemaComponent
+      },
+      {
+        path: 'Modal',
+        component: ModalComponent
+      },
+      {
+        path: 'Login',
+        component: LoginComponent
       }
     ]
   }

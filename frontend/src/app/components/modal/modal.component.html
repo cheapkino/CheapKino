@@ -1,0 +1,21 @@
+<div class="modal" id = "modal" >
+  <div class="modal__main-content">
+    <div class="modal__exit" id = "exit" (click)="hideModal()">X</div>
+    <div class="modal__content">
+      <h1 class="modal-content__title">Registration Form</h1>
+      <div class="modal-content__field">
+        <h2 class="modal-content-field__name">Username: </h2>
+        <input type="text" class="modal-content__email" placeholder="Enter your username here..." [(ngModel)]="username">
+      </div>
+      <div class="modal-content__field">
+        <h2 class="modal-content-field__name">Password:</h2>
+        <input type="password" class="modal-content__password" placeholder="Create a password" [(ngModel)]="password">
+      </div>
+      <div class="modal-content__field">
+        <h2 class="modal-content-field__name">Password(again):</h2>
+        <input type="password" class="modal-content__password" placeholder="Repeat your password" [(ngModel)]="passwordAgain">
+      </div>
+      <button type="submit" class="modal-content__submit" (click)="signUp()">Sign Up</button>
+    </div>
+  </div>
+</div>

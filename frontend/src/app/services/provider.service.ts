@@ -3,6 +3,7 @@ import { Movie } from '../models/movie';
 import {MainService} from './main.service';
 import {HttpClient} from '@angular/common/http';
 import {Cinema} from '../models/cinema';
+import {Token} from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,4 +53,21 @@ export class ProviderService extends MainService {
   getSessionsByCinema(cinema: Cinema): Promise<any> {
     return this.get('http://localhost:8000/session/?cinema=' + cinema.id, {});
   }
+
+  createUser(usernamE: string, passworD: string) {
+    return this.post('http://localhost:8000/user/register/', {
+      username: usernamE,
+      password: passworD,
+      groups: [1]
+    });
+  }
+
+
+  login(username: string, password: string): Promise<Token> {
+    return this.post('http://localhost:8000/user/login/', {
+      username: username,
+      password: password
+    });
+  }
+
 }

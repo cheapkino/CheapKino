@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<div class="modal" id = "modal" >
+  <div class="modal__main-content">
+    <div class="modal__exit" id = "exit" (click)="hideModal()">X</div>
+    <div class="modal__content">
+      <h1 class="modal-content__title">Login</h1>
+      <div class="modal-content__field">
+        <h2 class="modal-content-field__name">User: </h2>
+        <input type="text" class="modal-content__email" placeholder="Enter your username here..." [(ngModel)]="username">
+      </div>
+      <div class="modal-content__field">
+        <h2 class="modal-content-field__name">Password:</h2>
+        <input type="password" class="modal-content__password" placeholder="Write your password" [(ngModel)]="password">
+      </div>
+      <button type="submit" class="modal-content__submit">Sign In</button>
+    </div>
+  </div>
+</div>

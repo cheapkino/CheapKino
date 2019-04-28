@@ -1,22 +1,42 @@
-<div class="sessionsComponent">
-  <div class="sessionDetails columnHeader">
-    <div class = "columns">Кинотеатр</div>
-    <div class = "columns">Зал</div>
-    <div class = "columns">Фильм</div>
-    <div class = "columns">Статус</div>
-    <div class = "columns">Время</div>
-    <div class = "columns">Детям</div>
-    <div class = "columns">Студентам</div>
-    <div class = "columns">Взрослым</div>
-  </div>
-    <div class="sessionDetails" *ngFor="let session of sessions">
-      <div class = "columns">{{session.hall.cinema.name}}</div>
-      <div class = "columns">{{session.hall.name}}</div>
-      <div class = "columns">{{session.movie.title}}</div>
-      <div class = "columns">{{session.status}}</div>
-      <div class = "columns">{{getTimeOfSession(session)}}</div>
-      <div class = "columns">{{session.price_child}}</div>
-      <div class = "columns">{{session.price_student}}</div>
-      <div class = "columns">{{session.price}}</div>
-    </div>
-</div>
+<!--  <div class="sessionDetails columnHeader">-->
+<!--    <div class = "columns">Кинотеатр</div>-->
+<!--    <div class = "columns">Зал</div>-->
+<!--    <div class = "columns">Фильм</div>-->
+<!--    <div class = "columns">Статус</div>-->
+<!--    <div class = "columns">Время</div>-->
+<!--    <div class = "columns">Детям</div>-->
+<!--    <div class = "columns">Студентам</div>-->
+<!--    <div class = "columns">Взрослым</div>-->
+<!--  </div>-->
+<!--    <div class="sessionDetails" *ngFor="let session of sessions">-->
+<!--      <div class = "columns">{{session.hall.cinema.name}}</div>-->
+<!--      <div class = "columns">{{session.hall.name}}</div>-->
+<!--      <div class = "columns">{{session.movie.title}}</div>-->
+<!--      <div class = "columns">{{session.status}}</div>-->
+<!--      <div class = "columns">{{getTimeOfSession(session)}}</div>-->
+<!--      <div class = "columns">{{session.price_child}}</div>-->
+<!--      <div class = "columns">{{session.price_student}}</div>-->
+<!--      <div class = "columns">{{session.price}}</div>-->
+<!--    </div>-->
+  <table class="sessionsComponent">
+    <tr class="sessionDetails columnHeader">
+      <th class = "columns">Кинотеатр</th>
+      <th class = "columns">Зал</th>
+      <th class = "columns">Фильм</th>
+      <th class = "columns">Статус</th>
+      <th class = "columns">Время</th>
+      <th class = "columns">Детям</th>
+      <th class = "columns">Студентам</th>
+      <th class = "columns">Взрослым</th>
+    </tr>
+    <tr class = "sessionDetails" *ngFor="let session of sessions">
+            <td class = "columns">{{session.hall.cinema.name}}</td>
+            <td class = "columns">{{session.hall.name}}</td>
+            <td class = "columns">{{session.movie.title}}</td>
+            <td class = "columns">{{getStatusOfSession(session)}}</td>
+            <td class = "columns">{{getTimeOfSession(session)}}</td>
+            <td class = "columns">{{session.price_child}}</td>
+            <td class = "columns">{{session.price_student}}</td>
+            <td class = "columns">{{session.price}}</td>
+    </tr>
+  </table>

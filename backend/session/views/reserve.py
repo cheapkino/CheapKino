@@ -1,5 +1,4 @@
 from rest_framework import generics
-
 from session.models import SeatReserve
 from session.serializers import ReserveSerializer
 

@@ -21,6 +21,18 @@ export class SessionsByCinemaComponent implements OnInit {
     });
   }
 
+  getStatusOfSession(session: Session) {
+    if (session.status === 'F') {
+      return  'Будет';
+    }
+    if (session.status === 'P') {
+      return  'Прошел';
+    }
+    if (session.status === 'C') {
+      return  'Идет';
+    }
+  }
+
   getTimeOfSession(session: Session) {
     return moment(session.date).format('hh:mm');
   }
