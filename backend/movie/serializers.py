@@ -18,7 +18,7 @@ class MovieSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
-        fields = ('poster', 'title', 'description', 'premiere', 'duration', 'rating', 'genre', 'genre_id',)
+        fields = ('id', 'poster', 'title', 'description', 'premiere', 'duration', 'rating', 'genre', 'genre_id',)
 
     def create(self, validated_data):
         # popping id from json

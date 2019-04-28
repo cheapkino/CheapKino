@@ -10,7 +10,7 @@ class MovieAdmin(admin.ModelAdmin):
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', )
 
 
 @admin.register(Review)
