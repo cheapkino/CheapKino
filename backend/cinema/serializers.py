@@ -1,13 +1,32 @@
 from rest_framework import serializers
 
-from cinema.models import Cinema, Hall, Row, Seat
+from cinema.models import Cinema, Hall, Row, Seat, City
+
+
+class CitySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = City
+        fields = ('id', 'name', )
 
 
 class CinemaSerializer(serializers.ModelSerializer):
+    city = CitySerializer(read_only=True)
+    city_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Cinema
         fields = '__all__'
+
+    def create(self, validated_data):
+        # pop and search for city
+        city_id = validated_data.pop('city_id')
+        city = City.objects.get(id=city_id)
+
+        cinema = Cinema.objects.create(city=city, **validated_data)
+        cinema.save()
+
+        return cinema
 
 
 class HallSerializer(serializers.ModelSerializer):
