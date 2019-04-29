@@ -25,8 +25,10 @@ export class LoginComponent implements OnInit {
     } else {
         this.provider.login(this.username, this.password).then( res => {
             localStorage.setItem('token', res.token);
-            this.provider.logged = true;
         });
+        this.provider.logged = true;
+        alert('Добро пожаловать!');
+        this.router.navigateByUrl('');
     }
   }
 }

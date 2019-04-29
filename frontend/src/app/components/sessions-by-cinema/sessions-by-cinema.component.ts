@@ -36,4 +36,9 @@ export class SessionsByCinemaComponent implements OnInit {
   getTimeOfSession(session: Session) {
     return moment(session.date).format('hh:mm');
   }
+
+  buyLink(session: Session) {
+    this.provider.setSessionForReserve(session);
+  }
+
 }

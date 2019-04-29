@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Provider} from '@angular/core';
 import {Router} from '@angular/router';
+import {ProviderService} from '../../services/provider.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private provider: ProviderService) { }
 
 
   ngOnInit() {
@@ -23,14 +23,18 @@ export class HeaderComponent implements OnInit {
           mobileNav.style.display = 'none';
         }
       };
-
-
       hm.addEventListener('click', showMenu);
-
-
-
-
 
   }
 
+  getLoginStatus() {
+    return this.provider.logged;
+  }
+
+  logout() {
+    this.provider.logout().then(res => {
+      localStorage.clear();
+      this.provider.logged = false;
+    });
+  }
 }

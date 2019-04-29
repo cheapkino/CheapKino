@@ -8,6 +8,7 @@ import {CinemaComponent} from './components/cinema/cinema.component';
 import {SessionsByCinemaComponent} from './components/sessions-by-cinema/sessions-by-cinema.component';
 import {ModalComponent} from './components/modal/modal.component';
 import {LoginComponent} from './components/login/login.component';
+import {PlacesComponent} from './components/places/places.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'Login',
         component: LoginComponent
+      },
+      {
+        path: 'places',
+        component: PlacesComponent
       }
     ]
   }

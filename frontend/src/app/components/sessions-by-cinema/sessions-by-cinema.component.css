@@ -28,7 +28,7 @@
 
 .sessionDetails{
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .columns{
@@ -38,4 +38,16 @@
   justify-content: flex-start;
   padding-left: 10px;
   align-items: center;
+}
+
+a{
+  color: #FFF;
+  text-decoration: none;
+}
+a:visited{
+  text-decoration: none;
+  color: #FFF;
+}
+a:hover{
+  color: #a2dc4d;
 }
