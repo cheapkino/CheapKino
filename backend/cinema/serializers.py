@@ -51,10 +51,12 @@ class HallSerializer(serializers.ModelSerializer):
         if length and width:
 
             for i in range(width):
+                # row creating
                 row = Row.objects.create(number=i+1, hall=hall)
                 print('row ' + str(row) + ' created!')
 
                 for j in range(length):
+                    # seat creating
                     seat = Seat.objects.create(number=j+1, row=row)
                     print('seat ' + str(seat) + ' created!')
 
@@ -68,7 +70,7 @@ class HallSerializer(serializers.ModelSerializer):
 
 
 class RowSerializer(serializers.ModelSerializer):
-    hall = HallSerializer(read_only=True)
+    hall = HallSerializer()
 
     class Meta:
         model = Row

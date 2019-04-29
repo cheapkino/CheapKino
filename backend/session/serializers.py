@@ -46,3 +46,4 @@ class ReserveSerializer(serializers.ModelSerializer):
     class Meta:
         model = SeatReserve
         fields = '__all__'
+
