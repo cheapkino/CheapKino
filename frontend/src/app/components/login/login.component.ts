@@ -23,8 +23,9 @@ export class LoginComponent implements OnInit {
     if (this.username === '' || this.password === '') {
       alert('Заполните все поля!');
     } else {
-        this.provider.createUser(this.username, this.password).then( res => {
-          alert('Вы успешно зарегистрированы!' + ' Ваш логин: ' + res.username);
+        this.provider.login(this.username, this.password).then( res => {
+            localStorage.setItem('token', res.token);
+            this.provider.logged = true;
         });
     }
   }

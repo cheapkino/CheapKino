@@ -11,6 +11,7 @@ export class ProviderService extends MainService {
   public detailedMovie: Movie;
   public movieForSession: Movie;
   public cinemaForSession: Cinema;
+  public logged = false;
   constructor(http: HttpClient) {
     super(http);
   }
