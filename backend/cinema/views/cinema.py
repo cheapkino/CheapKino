@@ -11,8 +11,25 @@ class CinemasView(generics.ListCreateAPIView):
     filter_backends = (filters.OrderingFilter, )
     # permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
-    ordering = ('name', )
 
+    # serializer_class = ProductSerializer
+    # pagination_class = LimitOffsetPagination
+    # filter_backends = (DjangoFilterBackend,
+    #                    filters.SearchFilter,
+    #                    filters.OrderingFilter)
+
+    # # TODO DjangoFilterBackend
+    # filter_class = ProductFilter
+    # # filterset_fields = ('name', 'price')
+
+    # # TODO SearchFilter
+    # search_fields = ('name', 'price', 'count')
+
+    # # TODO OrderingFilter
+    # ordering_fields = ('name', 'price')
+
+    ordering = ('name', )
+    
     def get_queryset(self):
         return Cinema.objects.all()
 
