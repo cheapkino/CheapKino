@@ -1,4 +1,5 @@
 import {Movie} from './movie';
+import {User} from './user';
 
 export interface City {
   id: number;
@@ -16,6 +17,8 @@ export interface Hall {
   id: number;
   name: string;
   cinema: Cinema;
+  width: number;
+  length: number;
 }
 
 export interface Session {
@@ -28,4 +31,11 @@ export interface Session {
   movie: Movie;
   cinema: Cinema;
   hall: Hall;
+}
+
+export interface Seats {
+  id: number;
+  user: User;
+  seat: number;
+  session: number;
 }

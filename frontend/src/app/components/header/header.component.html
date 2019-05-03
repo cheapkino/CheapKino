@@ -3,8 +3,10 @@
     <a class = "logo" href="#">CheapKino</a>
     <nav class = "nav">
       <a class = "nav__link nav__link_active" href="#">Главная</a>
-      <a class = "nav__link nav__link_bordered" routerLink="Modal" id = "signUp" >Регистрация</a>
-      <a class = "nav__link nav__link_bordered" routerLink="Login">Войти</a>
+      <a class = "nav__link nav__link_bordered" routerLink="Modal" id = "signUp" *ngIf="!loggedIn">Регистрация</a>
+      <a class = "nav__link nav__link_bordered" routerLink="Login" *ngIf="!loggedIn">Войти</a>
+      <a class = "nav__link nav__link_bordered" routerLink="" *ngIf="loggedIn"  (click)="logout()">Выйти</a>
+
     </nav>
   </div>
   <header class="header-mobile">
@@ -14,8 +16,9 @@
     </div>
     <nav class = "nav-mobile" id = "nav-mobile">
       <a class = "nav__link nav__link_mobile" href="#">Главная</a>
-      <a class = "nav__link nav__link_mobile" routerLink="Modal" id = "signUpMobile">Регистрация</a>
-      <a class = "nav__link nav__link_mobile" routerLink="Login">Войти</a>
+      <a class = "nav__link nav__link_mobile" routerLink="Modal" id = "signUpMobile" *ngIf="!getLoginStatus()">Регистрация</a>
+      <a class = "nav__link nav__link_mobile" routerLink="Login" *ngIf="!getLoginStatus()">Войти</a>
+      <a class = "nav__link nav__link_mobile" routerLink="" *ngIf="getLoginStatus()" (click) = "logout()">Выйти</a>
     </nav>
   </header>
   <div class="header-bottom">

@@ -1,0 +1,22 @@
+.placesContainer{
+  width: 100%;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column{
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+button{
+  background: #a2dc4d;
+  border: 1px solid #232525;
+  width: 30px;
+  height: 30px;
+}

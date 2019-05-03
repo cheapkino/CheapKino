@@ -27,6 +27,7 @@
       <th class = "columns">Детям</th>
       <th class = "columns">Студентам</th>
       <th class = "columns">Взрослым</th>
+      <th class = "columns">Купить</th>
     </tr>
     <tr class = "sessionDetails" *ngFor="let session of sessions">
             <td class = "columns">{{session.hall.cinema.name}}</td>
@@ -36,5 +37,7 @@
             <td class = "columns">{{session.price_child}}</td>
             <td class = "columns">{{session.price_student}}</td>
             <td class = "columns">{{session.price}}</td>
+            <td class = "columns"><a routerLink="/places" (click)="buyLink(session)">Купить</a></td>
+
     </tr>
   </table>

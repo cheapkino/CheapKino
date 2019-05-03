@@ -19,6 +19,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import {FormsModule} from '@angular/forms';
 import {AuthInterceptor} from './AuthInterceptor';
+import { BigMainComponent } from './components/big-main/big-main.component';
+import { PlacesComponent } from './components/places/places.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {AuthInterceptor} from './AuthInterceptor';
     CinemaComponent,
     SessionsByCinemaComponent,
     ModalComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    BigMainComponent,
+    PlacesComponent
   ],
   imports: [
     BrowserModule,

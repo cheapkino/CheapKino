@@ -3,6 +3,7 @@ import {ProviderService} from '../../services/provider.service';
 import {Movie} from '../../models/movie';
 import {Session} from '../../models/cinema';
 import * as moment from 'moment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sessions',
@@ -12,7 +13,7 @@ import * as moment from 'moment';
 export class SessionsComponent implements OnInit {
   public movie: Movie;
   public sessions: Session[];
-  constructor(private provider: ProviderService) { }
+  constructor(private provider: ProviderService, private router: Router) { }
 
   ngOnInit() {
     this.movie = this.provider.getMovieForSession();
@@ -37,4 +38,7 @@ export class SessionsComponent implements OnInit {
     return moment(session.date).format('hh:mm');
   }
 
+  buyLink(session: Session) {
+      this.provider.setSessionForReserve(session);
+  }
 }

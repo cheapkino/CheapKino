@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
 import {MainService} from './main.service';
 import {HttpClient} from '@angular/common/http';
-import {Cinema} from '../models/cinema';
+import {Cinema, Session} from '../models/cinema';
 import {Token} from '../models/user';
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class ProviderService extends MainService {
   public detailedMovie: Movie;
   public movieForSession: Movie;
   public cinemaForSession: Cinema;
+  public sessionForReserve: Session;
   public logged = false;
   constructor(http: HttpClient) {
     super(http);
@@ -71,4 +72,24 @@ export class ProviderService extends MainService {
     });
   }
 
+  logout(): Promise<any> {
+    return this.post('http://localhost:8000/user/logout/', {
+    });
+  }
+
+  setSessionForReserve(session: Session) {
+    this.sessionForReserve = session;
+  }
+
+  getHall(session: Session): Promise<any> {
+    return this.get('http://localhost:8000/cinema/' + session.hall.cinema.id + '/hall/' + session.hall.id + '/' , {});
+  }
+
+  getSessionForReserve() {
+    return this.sessionForReserve;
+  }
+
+  getSeats(session: Session): Promise<any> {
+    return this.get('http://localhost:8000/session' + session.id + '/reserve/',  {});
+  }
 }
