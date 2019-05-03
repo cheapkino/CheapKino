@@ -5,19 +5,12 @@ from cinema.models import Cinema, Movie, Hall, Seat
 
 
 class Session(models.Model):
-    # list of statuses for status field
-    STATUSES = (('P', 'PAST'),
-                ('C', 'CURRENT'),
-                ('F', 'FUTURE'),
-                ('C', 'CANCEL'))
-
-    date = models.DateTimeField(null=False)
-    price = models.IntegerField(null=False)
-    price_student = models.IntegerField(null=True)
-    price_child = models.IntegerField(null=True)
-    status = models.CharField(max_length=7, choices=STATUSES, default='FUTURE', null=False)
+    date = models.DateTimeField()
+    price = models.IntegerField()
+    price_student = models.IntegerField(default=price)
+    price_child = models.IntegerField(default=price)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='sessions')
-    hall = models.ForeignKey(Hall, on_delete=models.CASCADE, related_name='sessions', default=1)
+    hall = models.ForeignKey(Hall, on_delete=models.CASCADE, related_name='sessions')
 
     def __str__(self):
         return '{} at {} on {}'.format(self.movie, self.hall, self.date)
@@ -33,4 +26,9 @@ class SeatReserve(models.Model):
         verbose_name_plural = 'Seats (reserved)'
 
     def __str__(self):
-        return '{} seat for {}'.format(self.seat, self.user)
+        if self.user:
+            return '{} seat for {}'.format(self.seat, self.user)
+
+        else:
+            return 'empty seat {}'.format(self.seat)
+

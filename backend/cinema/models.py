@@ -4,7 +4,7 @@ from movie.models import Movie
 
 
 class City(models.Model):
-    name = models.CharField(max_length=99, null=False)
+    name = models.CharField(max_length=99)
 
     class Meta:
         verbose_name = 'City'
@@ -15,8 +15,8 @@ class City(models.Model):
 
 
 class Cinema(models.Model):
-    name = models.CharField(max_length=99, null=False)
-    address = models.CharField(max_length=99, null=False)
+    name = models.CharField(max_length=99)
+    address = models.CharField(max_length=99)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -24,10 +24,10 @@ class Cinema(models.Model):
 
 
 class Hall(models.Model):
-    name = models.CharField(max_length=99, null=False)
+    name = models.CharField(max_length=99)
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='halls')
-    width = models.IntegerField(max_length=99, null=False, default=5)
-    length = models.IntegerField(max_length=99, null=False, default=4)
+    width = models.IntegerField()
+    length = models.IntegerField()
 
     def __str__(self):
         return '{} ({})'.format(self.name, self.cinema)
