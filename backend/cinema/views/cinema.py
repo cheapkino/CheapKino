@@ -7,26 +7,9 @@ from cinema.serializers import CinemaSerializer
 
 
 class CinemasView(generics.ListCreateAPIView):
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     filter_backends = (filters.OrderingFilter, )
-    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
-
-
-    # serializer_class = ProductSerializer
-    # pagination_class = LimitOffsetPagination
-    # filter_backends = (DjangoFilterBackend,
-    #                    filters.SearchFilter,
-    #                    filters.OrderingFilter)
-
-    # # TODO DjangoFilterBackend
-    # filter_class = ProductFilter
-    # # filterset_fields = ('name', 'price')
-
-    # # TODO SearchFilter
-    # search_fields = ('name', 'price', 'count')
-
-    # # TODO OrderingFilter
-    # ordering_fields = ('name', 'price')
 
     ordering = ('name', )
     
@@ -38,8 +21,7 @@ class CinemasView(generics.ListCreateAPIView):
 
 
 class CinemaView(generics.RetrieveAPIView):
-
-    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Cinema.objects.all()
