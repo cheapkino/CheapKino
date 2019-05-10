@@ -1,5 +1,4 @@
 from rest_framework import generics
-
 from cinema.models import Hall
 from cinema.serializers import HallSerializer
 
