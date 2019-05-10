@@ -7,12 +7,12 @@ from cinema.serializers import CinemaSerializer
 
 
 class CinemasView(generics.ListCreateAPIView):
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     filter_backends = (filters.OrderingFilter, )
-    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     ordering = ('name', )
-
+    
     def get_queryset(self):
         return Cinema.objects.all()
 
@@ -21,8 +21,7 @@ class CinemasView(generics.ListCreateAPIView):
 
 
 class CinemaView(generics.RetrieveAPIView):
-
-    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Cinema.objects.all()

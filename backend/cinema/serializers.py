@@ -16,7 +16,7 @@ class CinemaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cinema
-        fields = '__all__'
+        fields = ('id', 'name', 'address', 'city', 'city_id', )
 
     def create(self, validated_data):
         # pop and search for city
@@ -44,29 +44,29 @@ class HallSerializer(serializers.ModelSerializer):
         cinema_id = validated_data.pop('cinema_id')
         cinema = Cinema.objects.get(id=cinema_id)
 
-        hall = Hall.objects.create(cinema=cinema, **validated_data)
+        if cinema:
+            hall = Hall.objects.create(cinema=cinema, **validated_data)
 
-        # pop and creating seats
-        length, width = validated_data.pop('length'), validated_data.pop('width')
-        if length and width:
+            # pop and creating seats
+            length, width = validated_data.pop('length'), validated_data.pop('width')
 
+            # rows creating
             for i in range(width):
-                # row creating
                 row = Row.objects.create(number=i+1, hall=hall)
-                print('row ' + str(row) + ' created!')
+                print('---row ' + str(row) + ' created!')
 
+                # seats creating
                 for j in range(length):
-                    # seat creating
                     seat = Seat.objects.create(number=j+1, row=row)
-                    print('seat ' + str(seat) + ' created!')
+                    print('---seat ' + str(seat) + ' created!')
 
                     seat.save()
 
                 row.save()
 
-        hall.save()
+            hall.save()
 
-        return hall
+            return hall
 
 
 class RowSerializer(serializers.ModelSerializer):
@@ -74,12 +74,12 @@ class RowSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Row
-        fields = '__all__'
+        fields = ('id', 'number', 'hall', )
 
 
 class SeatSerializer(serializers.ModelSerializer):
-    row = RowSerializer(read_only=True)
+    # row = RowSerializer(read_only=True)
 
     class Meta:
         model = Seat
-        fields = '__all__'
+        fields = ('id', 'number', 'row', )

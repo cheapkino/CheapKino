@@ -21,7 +21,7 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = ('id', 'poster', 'title', 'description', 'premiere', 'duration', 'rating', 'genre', 'genre_id',)
 
     def create(self, validated_data):
-        # popping id from json
+        # pop and creating genre
         genre_id = validated_data.pop('genre_id')
         genre = Genre.objects.get(id=genre_id)
 

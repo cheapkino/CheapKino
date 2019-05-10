@@ -1,4 +1,5 @@
 from rest_framework import generics, filters
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 
 from cinema.models import Cinema
 from movie.models import Movie
@@ -9,6 +10,7 @@ import datetime
 
 
 class SessionsView(generics.ListCreateAPIView):
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         # get today`s sessions
@@ -42,6 +44,7 @@ class SessionsView(generics.ListCreateAPIView):
 
 
 class SessionView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Session.objects.all()

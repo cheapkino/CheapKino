@@ -1,11 +1,11 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from session.models import Session, SeatReserve
-from movie.serializers import MovieSerializer
-from cinema.serializers import HallSerializer, SeatSerializer
 from movie.models import Movie
 from cinema.models import Hall
+
+from movie.serializers import MovieSerializer
+from cinema.serializers import HallSerializer
 from user.serializers import UserSerializer
 
 
@@ -28,16 +28,20 @@ class SessionSerializer(serializers.ModelSerializer):
         hall_id = validated_data.pop('hall_id')
         hall = Hall.objects.get(id=hall_id)
 
-        session = Session.objects.create(movie=movie, hall=hall, **validated_data)
+        if movie and hall:
+            session = Session.objects.create(movie=movie, hall=hall, **validated_data)
 
-        for row in session.hall.rows.all():
-            for seat in row.seats.all():
-                reserve = SeatReserve.objects.create(seat=seat, session=session)
-                reserve.save()
+            for row in session.hall.rows.all():
+                for seat in row.seats.all():
+                    reserve = SeatReserve.objects.create(seat=seat, session=session)
+                    reserve.save()
 
-                # print(str(reserve) + ' created!')
+                    # print('---' + str(reserve) + ' created!')
 
-        return session
+            return session
+
+        else:
+            print('---movie and hall are not found')
 
 
 class ReserveSerializer(serializers.ModelSerializer):
@@ -45,5 +49,4 @@ class ReserveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SeatReserve
-        fields = '__all__'
-
+        fields = ('id', 'seat', 'user', 'session', )

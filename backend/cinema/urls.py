@@ -7,5 +7,5 @@ urlpatterns = [
     path('<int:pk>/', CinemaView.as_view()),
     path('<int:pk>/hall/', HallsView.as_view()),
     path('<int:pk2>/hall/<int:pk>/', HallView.as_view()),
-
+                            
 ]

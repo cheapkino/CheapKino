@@ -1,20 +1,22 @@
 from rest_framework import generics, filters
-from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from rest_framework.pagination import PageNumberPagination
 
 from movie.models import Movie
 from movie.serializers import MovieSerializer
 
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly, AllowAny
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 
 
 class MoviesView(generics.ListCreateAPIView):
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
-    permission_classes = (AllowAny, )
     filter_backends = (filters.OrderingFilter, )
 
+    # pagination with PageNumberPagination
     pagination_class = PageNumberPagination
     pagination_class.page_size = 10
 
+    # ordering filter
     ordering_fields = ('rating', )
     ordering = ('-premiere', 'title', )
 
@@ -26,8 +28,7 @@ class MoviesView(generics.ListCreateAPIView):
 
 
 class MovieView(generics.RetrieveUpdateDestroyAPIView):
-
-    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Movie.objects.all()
