@@ -1,7 +1,9 @@
 <div class="placesContainer">
-  <div class="row" *ngFor="let row of seats">
-    <div class="column" *ngFor="let seat of row; let i = index" [attr.data-index] = "i">
-      <button>{{ i + 1 }}</button>
+  <h5 class="display">Экран</h5>
+  <div class="row" *ngFor="let row of seats; let i = index" [attr.data-index] = "i">
+    <h5>Ряд {{i + 1}}: </h5>
+    <div class="column" *ngFor="let seat of row; let j = index" [attr.data-index] = "j">
+      <button id="{{i + '+' + j}}">{{ j + 1 }}</button>
     </div>
   </div>
 </div>

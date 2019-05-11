@@ -1,5 +1,9 @@
 .placesContainer{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .row{
@@ -9,14 +13,21 @@
 }
 
 .column{
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   margin: 10px;
 }
 
 button{
   background: #a2dc4d;
   border: 1px solid #232525;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
+}
+
+.display{
+  color: #a2dc4d;
+  font-weight: 900;
+  font-size: 30px;
+  margin: 20px;
 }

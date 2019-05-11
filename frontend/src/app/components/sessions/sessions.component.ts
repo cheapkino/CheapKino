@@ -17,13 +17,21 @@ export class SessionsComponent implements OnInit {
 
   ngOnInit() {
     this.movie = this.provider.getMovieForSession();
+    if ( this.movie === undefined) {
+      this.movie = JSON.parse(localStorage.getItem('movieForSession'));
+      if (this.movie === null) {
+        this.router.navigateByUrl('').then( res => {
+          alert('Please choose movie to see sessions!');
+        });
+      }
+    }
     this.provider.getSessions(this.movie).then(res => {
         this.sessions = res;
     });
 
   }
 
-  getStatusOfSession(session: Session){
+  getStatusOfSession(session: Session) {
     if (session.status === 'F') {
       return  'Будет';
     }
@@ -34,6 +42,7 @@ export class SessionsComponent implements OnInit {
       return  'Идет';
     }
   }
+
   getTimeOfSession(session: Session) {
     return moment(session.date).format('hh:mm');
   }

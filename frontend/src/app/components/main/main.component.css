@@ -1,6 +1,10 @@
 .MainComponent{
-  padding: 50px 0;
   width: 100%;
+}
 
+.mainContent{
+  width: 100%;
+  padding: 50px 10%;
+  box-sizing: border-box;
 }
 

@@ -15,6 +15,15 @@ export class MovieDetailedComponent implements OnInit {
   constructor(private provider: ProviderService, private sanitizer: DomSanitizer, private router: Router) { }
   ngOnInit() {
     this.movie = this.provider.getDetailedMovie();
+    if ( this.movie === undefined) {
+      this.movie = JSON.parse(localStorage.getItem('detailedMovie'));
+      if (this.movie === null) {
+        this.router.navigateByUrl('').then( res => {
+          alert('Please choose movie to see detailed information!');
+        });
+      }
+    }
+
     if (this.movie === undefined) {
       this.router.navigateByUrl('');
     } else {

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { MainComponent } from './components/main/main.component';
 import { MovieComponent } from './components/movie/movie.component';
 import {ProviderService} from './services/provider.service';
@@ -16,10 +15,8 @@ import { SessionsComponent } from './components/sessions/sessions.component';
 import { CinemaComponent } from './components/cinema/cinema.component';
 import { SessionsByCinemaComponent } from './components/sessions-by-cinema/sessions-by-cinema.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import {FormsModule} from '@angular/forms';
 import {AuthInterceptor} from './AuthInterceptor';
-import { BigMainComponent } from './components/big-main/big-main.component';
 import { PlacesComponent } from './components/places/places.component';
 
 @NgModule({
@@ -28,7 +25,6 @@ import { PlacesComponent } from './components/places/places.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignUpComponent,
     MainComponent,
     MovieComponent,
     MovieDetailedComponent,
@@ -37,8 +33,6 @@ import { PlacesComponent } from './components/places/places.component';
     CinemaComponent,
     SessionsByCinemaComponent,
     ModalComponent,
-    LoginModalComponent,
-    BigMainComponent,
     PlacesComponent
   ],
   imports: [
