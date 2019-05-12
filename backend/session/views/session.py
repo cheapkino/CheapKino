@@ -7,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from cinema.models import Cinema
 from movie.models import Movie
 from session.models import Session
-from session.permissions import IsOwner
 from session.serializers import SessionSerializer
 
 import datetime
