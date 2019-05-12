@@ -1,10 +1,9 @@
 from rest_framework import generics, filters
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 
 from movie.models import Movie
 from movie.serializers import MovieSerializer
-
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 
 
 class MoviesView(generics.ListCreateAPIView):

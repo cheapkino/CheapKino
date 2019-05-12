@@ -3,7 +3,6 @@ from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly, IsA
 
 from movie.models import Review
 from movie.serializers import ReviewSerializer
-
 from movie.permissions import IsOwner
 
 

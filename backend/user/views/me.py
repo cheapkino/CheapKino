@@ -7,10 +7,12 @@ from user.serializers import UserSerializer
 
 @api_view(['GET'])
 def me(request):
-    if request.user:
+    if request.user.is_authenticated:
         serializer = UserSerializer(request.user)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     else:
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
+        exception = {"detail": "Authentication credentials were not provided."}
+
+        return Response(exception, status=status.HTTP_401_UNAUTHORIZED)
