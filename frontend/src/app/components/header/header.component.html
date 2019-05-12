@@ -3,10 +3,9 @@
     <a class = "logo" href="#">CheapKino</a>
     <nav class = "nav">
       <a class = "nav__link nav__link_active" href="#">Главная</a>
-      <a class = "nav__link nav__link_bordered" routerLink="Modal" id = "signUp" *ngIf="!loggedIn">Регистрация</a>
-      <a class = "nav__link nav__link_bordered" routerLink="Login" *ngIf="!loggedIn">Войти</a>
+      <a class = "nav__link nav__link_bordered" (click)="signUp()" id = "signUp" *ngIf="!loggedIn">Регистрация</a>
+      <a class = "nav__link nav__link_bordered" (click)="login()" *ngIf="!loggedIn">Войти</a>
       <a class = "nav__link nav__link_bordered" routerLink="" *ngIf="loggedIn"  (click)="logout()">Выйти</a>
-
     </nav>
   </div>
   <header class="header-mobile">
@@ -16,12 +15,13 @@
     </div>
     <nav class = "nav-mobile" id = "nav-mobile">
       <a class = "nav__link nav__link_mobile" href="#">Главная</a>
-      <a class = "nav__link nav__link_mobile" routerLink="Modal" id = "signUpMobile" *ngIf="!getLoginStatus()">Регистрация</a>
-      <a class = "nav__link nav__link_mobile" routerLink="Login" *ngIf="!getLoginStatus()">Войти</a>
-      <a class = "nav__link nav__link_mobile" routerLink="" *ngIf="getLoginStatus()" (click) = "logout()">Выйти</a>
+      <a class = "nav__link nav__link_mobile" (click)="signUp()" id = "signUpMobile" *ngIf="!loggedIn">Регистрация</a>
+      <a class = "nav__link nav__link_mobile" (click)="login()" *ngIf="!loggedIn">Войти</a>
+      <a class = "nav__link nav__link_mobile" *ngIf="loggedIn" (click) = "logout()">Выйти</a>
     </nav>
   </header>
   <div class="header-bottom">
+<!--    <h3 *ngIf="loggedIn" class="greeting">Добро пожаловать, <span class = "username">{{getUsername()}}</span></h3>-->
     <div class="intro">
       <h1 class = "intro_main-text">CheapKino платформа доступного кино</h1>
       <p class = "intro_para">Платформа каждый час снижает цены на билеты</p>

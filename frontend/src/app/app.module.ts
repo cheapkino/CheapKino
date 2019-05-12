@@ -18,6 +18,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import {FormsModule} from '@angular/forms';
 import {AuthInterceptor} from './AuthInterceptor';
 import { PlacesComponent } from './components/places/places.component';
+import { CinemaAdminComponent } from './components/cinema-admin/cinema-admin.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PlacesComponent } from './components/places/places.component';
     CinemaComponent,
     SessionsByCinemaComponent,
     ModalComponent,
-    PlacesComponent
+    PlacesComponent,
+    CinemaAdminComponent
   ],
   imports: [
     BrowserModule,
