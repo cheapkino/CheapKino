@@ -35,3 +35,4 @@ class MovieView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_serializer_class(self):
         return MovieSerializer
+
