@@ -18,6 +18,7 @@ class MoviesView(generics.ListCreateAPIView):
 
     # ordering filter
     ordering_fields = ('rating', )
+    # default filtering
     ordering = ('-premiere', 'title', )
 
     def get_queryset(self):

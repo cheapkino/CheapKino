@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 from rest_framework import serializers
 
 from movie.models import Movie, Review, Genre
@@ -23,7 +25,7 @@ class MovieSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # pop and creating genre
         genre_id = validated_data.pop('genre_id')
-        genre = Genre.objects.get(id=genre_id)
+        genre = get_object_or_404(Genre, id=genre_id)
 
         # creating object
         movie = Movie.objects.create(genre=genre, **validated_data)
