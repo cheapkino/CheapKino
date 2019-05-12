@@ -1,12 +1,14 @@
+from django.contrib.auth.models import User
+
 from rest_framework import generics
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from session.models import SeatReserve
 from session.serializers import ReserveSerializer
+from session.permissions import IsOwner
 
 
 class ReservesView(generics.ListAPIView):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return SeatReserve.objects.all()
@@ -14,9 +16,18 @@ class ReservesView(generics.ListAPIView):
     def get_serializer_class(self):
         return ReserveSerializer
 
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return AllowAny(),
+
+        elif self.request.method == 'POST':
+            if User.objects.filter(username=self.request.user.username, groups=(2,)):
+                return IsAuthenticated(),
+
+            return IsAdminUser(),
+
 
 class ReserveView(generics.UpdateAPIView):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return SeatReserve.objects.all()
@@ -25,5 +36,22 @@ class ReserveView(generics.UpdateAPIView):
         return ReserveSerializer
 
     def perform_update(self, serializer):
-        serializer.save(user=self.request.user)
+        if User.objects.filter(username=self.request.user.username, groups=(1, )):
+            serializer.save(user=self.request.user)
+
+        else:
+            serializer.save()
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return AllowAny(),
+
+        elif self.request.method in ('PUT', 'DELETE', ):
+            if User.objects.filter(username=self.request.user.username, groups=(1, )) and self.request.method == 'PUT':
+                return IsAuthenticated(), IsOwner(),
+
+            elif User.objects.filter(username=self.request.user.username, groups=(2, )):
+                return IsAuthenticated(),
+
+            return IsAdminUser(),
 

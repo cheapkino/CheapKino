@@ -1,18 +1,19 @@
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from cinema.models import Cinema
 from movie.models import Movie
 from session.models import Session
+from session.permissions import IsOwner
 from session.serializers import SessionSerializer
 
 import datetime
 
 
 class SessionsView(generics.ListCreateAPIView):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         # get today`s sessions
@@ -38,12 +39,31 @@ class SessionsView(generics.ListCreateAPIView):
     def get_serializer_class(self):
         return SessionSerializer
 
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return AllowAny(),
+
+        elif self.request.method == 'POST':
+            if User.objects.filter(username=self.request.user.username, groups=(2, )):
+                return IsAuthenticated(),
+
+            return IsAdminUser(),
+
 
 class SessionView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Session.objects.all()
 
     def get_serializer_class(self):
         return SessionSerializer
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return AllowAny(),
+
+        elif self.request.method in ('PUT', 'DELETE', ):
+            if User.objects.filter(username=self.request.user.username, groups=(2, )):
+                return IsAuthenticated(),
+
+            return IsAdminUser(),
