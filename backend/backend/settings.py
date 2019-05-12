@@ -41,8 +41,13 @@ INSTALLED_APPS = [
     # DRF
     'rest_framework',
     'rest_framework.authtoken',
+
     # CORS
     'corsheaders',
+
+    # DjangoFilterBackend
+    'django_filters',
+
     # modules
     'cinema',
     'movie',
