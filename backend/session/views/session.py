@@ -1,4 +1,6 @@
-from rest_framework import generics, filters
+from django.shortcuts import get_object_or_404
+
+from rest_framework import generics
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 
 from cinema.models import Cinema
@@ -23,17 +25,13 @@ class SessionsView(generics.ListCreateAPIView):
 
         # movie filter
         if movie_id:
-            movie = Movie.objects.get(id=movie_id)
-
-            if movie:
-                queryset = queryset.filter(movie=movie)
+            movie = get_object_or_404(Movie, id=movie_id)
+            queryset = queryset.filter(movie=movie)
 
         # cinema filter
         elif cinema_id:
-            cinema = Cinema.objects.get(id=cinema_id)
-
-            if cinema:
-                queryset = queryset.filter(hall__cinema=cinema)
+            cinema = get_object_or_404(Cinema, id=cinema_id)
+            queryset = queryset.filter(hall__cinema=cinema)
 
         return queryset
 
