@@ -1,6 +1,5 @@
 from rest_framework import generics
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
-
 from cinema.models import Hall
 from cinema.serializers import HallSerializer
 

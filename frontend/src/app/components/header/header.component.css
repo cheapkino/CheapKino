@@ -157,6 +157,17 @@
   font-size: 24px;
   color: #FFF;
 }
+
+.greeting{
+  font-weight: 900;
+  font-size: 18px;
+  color: #f0f0f0;
+}
+
+.username{
+  color: #a2dc4d;
+}
+
 @media (max-width: 768px) {
   .header{
     padding: 0 0;
@@ -174,6 +185,11 @@
     font-size: 26px;
     margin-bottom: 30px;
   }
+  .greeting{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
 }
 @media (max-width: 425px) {
   .intro{
@@ -190,5 +206,6 @@
     width: 120px;
     height: 50px;
   }
+
 }
 

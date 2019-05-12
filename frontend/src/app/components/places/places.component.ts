@@ -16,6 +16,14 @@ export class PlacesComponent implements OnInit {
   public seats: Seats[][];
   ngOnInit() {
     this.session = this.provider.getSessionForReserve();
+    if ( this.session === undefined) {
+      this.session = JSON.parse(localStorage.getItem('sessionForReserve'));
+      if (this.session === null) {
+        this.router.navigateByUrl('').then( res => {
+          alert('Please choose session to buy tickets!');
+        });
+      }
+    }
     console.log(this.session);
     this.getHall();
   }
@@ -32,11 +40,10 @@ export class PlacesComponent implements OnInit {
   getSeats() {
     // this.provider.getSeats(this.session).then( res => {
     //   const seat = res;
-    //
     // });
-    let arr = [];
+    const arr = [];
     for (let i = 0; i < this.hall.length; i++) {
-      let row = [];
+      const row = [];
       for (let j = 0; j < this.hall.width; j++) {
         row.push(1);
       }

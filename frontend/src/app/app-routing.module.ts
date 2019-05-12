@@ -9,6 +9,7 @@ import {SessionsByCinemaComponent} from './components/sessions-by-cinema/session
 import {ModalComponent} from './components/modal/modal.component';
 import {LoginComponent} from './components/login/login.component';
 import {PlacesComponent} from './components/places/places.component';
+import {CinemaAdminComponent} from './components/cinema-admin/cinema-admin.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,10 @@ const routes: Routes = [
         component: PlacesComponent
       }
     ]
+  },
+  {
+    path: 'admin',
+    component: CinemaAdminComponent
   }
 ];
 

@@ -14,7 +14,8 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit() {
     this.provider.getMovies().then( res =>  {
-      this.movies = res.results; // With pagination it will be res.result
+      this.movies = res.results;
+      console.log(res);
     });
   }
 

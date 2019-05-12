@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   hideModal = () => {
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('').then();
   }
 
   login() {
@@ -25,10 +25,16 @@ export class LoginComponent implements OnInit {
     } else {
         this.provider.login(this.username, this.password).then( res => {
             localStorage.setItem('token', res.token);
+            this.provider.logged = true;
+            this.provider.username = this.username;
+            alert('Добро пожаловать!');
+            this.router.navigateByUrl('');
+        }).catch( res => {
+            alert('You may mistyped your login or password. Try again!');
+            this.username = '';
+            this.password = '';
         });
-        this.provider.logged = true;
-        alert('Добро пожаловать!');
-        this.router.navigateByUrl('');
+
     }
   }
 }

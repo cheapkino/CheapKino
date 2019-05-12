@@ -1,4 +1,4 @@
-import {Component, OnInit, Provider} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ProviderService} from '../../services/provider.service';
 
@@ -9,7 +9,8 @@ import {ProviderService} from '../../services/provider.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(private router: Router, private provider: ProviderService) { }
-
+  @Input()
+  public loggedIn;
 
   ngOnInit() {
       const hm = document.getElementById('hamburger');
@@ -27,14 +28,27 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  getLoginStatus() {
-    return this.provider.logged;
+  signUp() {
+    this.router.navigateByUrl('Modal').then();
+  }
+
+  login() {
+    this.router.navigateByUrl('Login').then();
   }
 
   logout() {
     this.provider.logout().then(res => {
-      localStorage.clear();
+      localStorage.removeItem('token');
       this.provider.logged = false;
+      this.router.navigateByUrl('').then();
     });
+  }
+
+  getUsername = () => {
+    if (this.provider.logged) {
+      return this.provider.username;
+    } else {
+      return '';
+    }
   }
 }

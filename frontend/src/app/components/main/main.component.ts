@@ -16,6 +16,13 @@ export class MainComponent implements OnInit {
       this.provider.getMovies().then( res =>  {
         this.movies = res.results; // With pagination it will be res.result
       });
+      if (localStorage.getItem('token')) {
+        this.provider.logged = true;
+      }
+  }
+
+  getLoginStatus() {
+    return this.provider.logged;
   }
 
 }

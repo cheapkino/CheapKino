@@ -12,6 +12,7 @@ export class ProviderService extends MainService {
   public movieForSession: Movie;
   public cinemaForSession: Cinema;
   public sessionForReserve: Session;
+  public username: string;
   public logged = false;
   constructor(http: HttpClient) {
     super(http);
@@ -21,39 +22,20 @@ export class ProviderService extends MainService {
     return this.get('http://localhost:8000/movie/', {});
   }
 
-  setDetailedMovie(movie: Movie) {
-    this.detailedMovie = movie;
-  }
-
-  getDetailedMovie(): Movie {
-    return this.detailedMovie;
-  }
-
-  setMovieForSession(movie: Movie) {
-    this.movieForSession = movie;
-  }
-
-  getMovieForSession() {
-    return this.movieForSession;
-  }
-
   getCinemas(): Promise<any> {
     return this.get('http://localhost:8000/cinema/', {});
   }
 
-  setCinemaForSession(cinema: Cinema) {
-    this.cinemaForSession = cinema;
-  }
-
-  getCinemaForSession() {
-    return this.cinemaForSession;
-  }
   getSessions(movie: Movie): Promise<any> {
     return this.get('http://localhost:8000/session/?movie=' + movie.id, {});
   }
 
   getSessionsByCinema(cinema: Cinema): Promise<any> {
     return this.get('http://localhost:8000/session/?cinema=' + cinema.id, {});
+  }
+
+  getHall(session: Session): Promise<any> {
+    return this.get('http://localhost:8000/cinema/' + session.hall.cinema.id + '/hall/' + session.hall.id + '/' , {});
   }
 
   createUser(usernamE: string, passworD: string) {
@@ -64,32 +46,55 @@ export class ProviderService extends MainService {
     });
   }
 
-
-  login(username: string, password: string): Promise<Token> {
+  login(usernamE: string, passworD: string): Promise<Token> {
     return this.post('http://localhost:8000/user/login/', {
-      username: username,
-      password: password
+      username: usernamE,
+      password: passworD
     });
   }
 
   logout(): Promise<any> {
-    return this.post('http://localhost:8000/user/logout/', {
-    });
+    return this.post('http://localhost:8000/user/logout/', {});
   }
 
   setSessionForReserve(session: Session) {
     this.sessionForReserve = session;
+    localStorage.setItem('sessionForReserve', JSON.stringify(session));
   }
 
-  getHall(session: Session): Promise<any> {
-    return this.get('http://localhost:8000/cinema/' + session.hall.cinema.id + '/hall/' + session.hall.id + '/' , {});
+  setDetailedMovie(movie: Movie) {
+    this.detailedMovie = movie;
+    localStorage.setItem('detailedMovie', JSON.stringify(movie));
+  }
+
+  setMovieForSession(movie: Movie) {
+    this.movieForSession = movie;
+    localStorage.setItem('movieForSession', JSON.stringify(movie));
+  }
+
+  setCinemaForSession(cinema: Cinema) {
+    this.cinemaForSession = cinema;
+    localStorage.setItem('cinemaForSession', JSON.stringify(cinema));
+  }
+
+  getMovieForSession() {
+    return this.movieForSession;
   }
 
   getSessionForReserve() {
     return this.sessionForReserve;
   }
 
+  getCinemaForSession() {
+    return this.cinemaForSession;
+  }
+
+  getDetailedMovie(): Movie {
+    return this.detailedMovie;
+  }
+
   getSeats(session: Session): Promise<any> {
     return this.get('http://localhost:8000/session' + session.id + '/reserve/',  {});
   }
+
 }

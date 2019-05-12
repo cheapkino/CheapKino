@@ -30,6 +30,11 @@ export class ModalComponent implements OnInit {
       } else {
           this.provider.createUser(this.username, this.password).then( res => {
               alert('Вы успешно зарегистрированы!' + ' Ваш логин: ' + res.username);
+              this.provider.login(this.username, this.password).then( res => {
+                localStorage.setItem('token', res.token);
+                this.provider.logged = true;
+                this.router.navigateByUrl('').then();
+              });
           });
       }
     }

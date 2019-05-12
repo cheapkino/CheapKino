@@ -15,7 +15,6 @@ class SessionsView(generics.ListCreateAPIView):
     def get_queryset(self):
         # get today`s sessions
         now = datetime.datetime.now()
-
         queryset = Session.objects.filter(date__day=now.day, date__month=now.month, date__year=now.year)
 
         # filters around movie or cinema
