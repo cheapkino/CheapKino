@@ -1,13 +1,12 @@
 from rest_framework import generics, filters
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.permissions import IsAdminUser, AllowAny
 
 from movie.models import Movie
 from movie.serializers import MovieSerializer
 
 
 class MoviesView(generics.ListCreateAPIView):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     filter_backends = (filters.OrderingFilter, )
 
@@ -26,13 +25,26 @@ class MoviesView(generics.ListCreateAPIView):
     def get_serializer_class(self):
         return MovieSerializer
 
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return AllowAny(),
+
+        elif self.request.method == 'POST':
+            return IsAdminUser(),
+
 
 class MovieView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
 
     def get_queryset(self):
         return Movie.objects.all()
 
     def get_serializer_class(self):
         return MovieSerializer
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return AllowAny(),
+
+        elif self.request.method in ('PUT', 'DELETE', ):
+            return IsAdminUser(),
 
