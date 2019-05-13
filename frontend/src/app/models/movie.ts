@@ -16,7 +16,7 @@ export interface Movie {
   genre: Genre;
 }
 
-class Review {
+export interface Review {
   id: number;
   post_date: Date;
   text: string;

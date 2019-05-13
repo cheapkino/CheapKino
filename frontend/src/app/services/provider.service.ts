@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Movie } from '../models/movie';
+import {Movie, Review} from '../models/movie';
 import {MainService} from './main.service';
 import {HttpClient} from '@angular/common/http';
 import {Cinema, Seat, Session} from '../models/cinema';
 import {Token} from '../models/user';
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -56,6 +59,10 @@ export class ProviderService extends MainService {
 
   logout(): Promise<any> {
     return this.post('http://localhost:8000/user/logout/', {});
+  }
+
+  getReviews(movie: Movie): Promise<Review[]> {
+    return this.get(`http://localhost:8000/movie/${movie.id}/review/`, {});
   }
 
   getPrice(session: Session): Promise<any> {

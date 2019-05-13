@@ -20,6 +20,7 @@ import {AuthInterceptor} from './AuthInterceptor';
 import { PlacesComponent } from './components/places/places.component';
 import { CinemaAdminComponent } from './components/cinema-admin/cinema-admin.component';
 import { ReserveModalComponent } from './components/reserve-modal/reserve-modal.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ReserveModalComponent } from './components/reserve-modal/reserve-modal.
     ModalComponent,
     PlacesComponent,
     CinemaAdminComponent,
-    ReserveModalComponent
+    ReserveModalComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,

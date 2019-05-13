@@ -1,0 +1,9 @@
+<ng-container class="reviewsContent">
+  <ng-container class="reviews" *ngFor = "let review of reviews">
+    <div>
+      <div>{{review.owner.username}}</div>
+      <div>{{review.post_date}}</div>
+    </div>
+    <input type="text" value = "{{review.text}}">
+  </ng-container>
+</ng-container>

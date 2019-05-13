@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Movie} from '../../models/movie';
+import {Movie, Review} from '../../models/movie';
 import {ProviderService} from '../../services/provider.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Router} from '@angular/router';
@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class MovieDetailedComponent implements OnInit {
   public movie: Movie;
   public image;
+  public reviews: Review[];
   constructor(private provider: ProviderService, private sanitizer: DomSanitizer, private router: Router) { }
   ngOnInit() {
     this.movie = this.provider.getDetailedMovie();
@@ -23,6 +24,7 @@ export class MovieDetailedComponent implements OnInit {
         });
       }
     }
+
 
     if (this.movie === undefined) {
       this.router.navigateByUrl('');
