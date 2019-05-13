@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Movie, Review} from '../models/movie';
 import {MainService} from './main.service';
 import {HttpClient} from '@angular/common/http';
-import {Cinema, Seat, Session} from '../models/cinema';
+import {Cinema, Seat, Session, Hall} from '../models/cinema';
 import {Token} from '../models/user';
 import * as moment from 'moment';
 
@@ -62,6 +62,10 @@ export class ProviderService extends MainService {
 
   getSessionsByCinema(cinema: Cinema): Promise<any> {
     return this.get('http://localhost:8000/session/?cinema=' + cinema.id, {});
+  }
+
+  getHallsByCinema(cinema: Cinema): Promise<Hall[]> {
+    return this.get('http://localhost:8000/cinema/' + cinema.id + '/hall/', {});
   }
 
   getHall(session: Session): Promise<any> {
@@ -146,6 +150,17 @@ export class ProviderService extends MainService {
 
   reserveSeat(session: Session, seat: Seat) {
     return this.put(`http://localhost:8000/session/${session.id}/reserve/${seat.id}/`, seat);
+  }
+
+  createSession(session: Session, movie_id: number, hall_id: number) {
+    return this.post("http://localhost:8000/session/", {
+      date: session.date,
+      price: session.price,
+      price_student: session.price_student,
+      price_child: session.price_student,
+      movie_id: movie_id,
+      hall_id: hall_id
+    });
   }
 
 }

@@ -27,7 +27,6 @@ export interface Session {
   price: number;
   price_student: number;
   price_child: number;
-  status: string;
   movie: Movie;
   cinema: Cinema;
   hall: Hall;
