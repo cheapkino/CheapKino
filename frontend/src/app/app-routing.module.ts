@@ -52,13 +52,13 @@ const routes: Routes = [
       {
         path: 'reserveSeat',
         component: ReserveModalComponent
+      },
+      {
+        path: 'admin',
+        component: CinemaAdminComponent
       }
     ]
-  },
-  {
-    path: 'admin',
-    component: CinemaAdminComponent
-  }
+  } 
 ];
 
 @NgModule({

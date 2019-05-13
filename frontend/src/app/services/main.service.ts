@@ -9,7 +9,7 @@ export class MainService {
   }
 
   formatDate(date: Date) {
-    return moment(date).format('DD-MM-YYYY');
+    return moment(date).format('YYYY-MM-DDThh:mm:ss');
   }
 
   get(uri: string, body: any): Promise<any> {

@@ -1,3 +1,40 @@
-<p>
-  cinema-admin works!
-</p>
+<div class="cinema-admin">
+  <div class="session">
+    <div class="date">
+      <input type="text" [(ngModel)]='year'>
+      <input type="text" [(ngModel)]='month'>
+      <input type="text" [(ngModel)]='day'>
+      <input type="text" [(ngModel)]='hour'>
+      <input type="text" [(ngModel)]='minute'>
+    </div>
+    <div class="price">
+      <input type="text" [(ngModel)]='session.price'>
+      <input type="text" [(ngModel)]='session.price_student'>
+      <input type="text" [(ngModel)]='session.price_child'>
+    </div>
+    <div *ngIf='cinemas' class="hall">
+      <select style="width: 250px" [(ngModel)]='currentCinema'>
+        <option *ngFor='let cinema of cinemas' (click)='selectCinema(cinema)' value="cinema">
+          {{cinema.name}}
+        </option>
+      </select>
+      <select *ngIf='currentCinema' style="width: 250px" [(ngModel)]='currentHall'>
+        <option *ngFor='let hall of halls' value="hall" (click)='selectHall(hall.id)'>
+          {{hall.name}}
+        </option>
+      </select>
+    </div>
+    <div *ngIf='movies' class="movie">
+      <select style="width: 250px" [(ngModel)]='currentMovie'>
+        <option *ngFor='let movie of movies' value="movie" (click)='selectMovie(movie.id)'>
+          {{movie.title}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="create_session">
+    <div class="go" (click)='createSession()'>
+      CREATE
+    </div>
+  </div>
+</div>
