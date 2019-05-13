@@ -47,11 +47,5 @@ class ReserveView(generics.UpdateAPIView):
             return AllowAny(),
 
         elif self.request.method in ('PUT', 'DELETE', ):
-            if User.objects.filter(username=self.request.user.username, groups=(1, )) and self.request.method == 'PUT':
-                return IsAuthenticated(), IsOwner(),
-
-            elif User.objects.filter(username=self.request.user.username, groups=(2, )):
-                return IsAuthenticated(),
-
-            return IsAdminUser(),
+            return IsAuthenticated(),
 

@@ -25,11 +25,11 @@ export class ReserveModalComponent implements OnInit {
           alert('Please choose session to buy tickets!');
         });
       }
-      this.provider.getPrice(this.session).then( res => {
-        console.log(res);
-        this.prices =  res;
-      });
     }
+    this.provider.getPrice(this.session).then( res => {
+      console.log(res);
+      this.prices =  res;
+    });
     console.log(this.seatForReserve);
   }
 

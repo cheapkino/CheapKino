@@ -9,4 +9,4 @@ class IsOwner(permissions.BasePermission):
             return True
 
         # obj here is a UserProfile instance
-        return obj.owner == request.user
+        return obj.user == request.user
