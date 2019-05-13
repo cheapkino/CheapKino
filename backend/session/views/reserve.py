@@ -5,7 +5,6 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from session.models import SeatReserve
 from session.serializers import ReserveSerializer
-from session.permissions import IsOwner
 
 
 class ReservesView(generics.ListAPIView):
@@ -21,7 +20,7 @@ class ReservesView(generics.ListAPIView):
             return AllowAny(),
 
         elif self.request.method == 'POST':
-            if User.objects.filter(username=self.request.user.username, groups=(2,)):
+            if User.objects.filter(username=self.request.user.username, groups=(2, )):
                 return IsAuthenticated(),
 
             return IsAdminUser(),
