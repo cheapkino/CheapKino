@@ -4,6 +4,19 @@
       <div>{{review.owner.username}}</div>
       <div>{{review.post_date}}</div>
     </div>
-    <input type="text" value = "{{review.text}}">
+    <div *ngIf="review.owner.username === username">
+      <div *ngIf="!isEditable">{{review.text}}</div>
+      <input type="text" *ngIf="isEditable" [(ngModel)]="review.text">
+      <button *ngIf="!isEditable" (click)="flipEditable()">Изменить</button>
+      <button *ngIf="isEditable" (click)="onSave(review)">Сохранить</button>
+      <button (click)="deleteReview(review)">Удалить</button>
+    </div>
+    <div *ngIf="review.owner.username !== username">
+      <div>{{review.text}}</div>
+    </div>
+  </ng-container>
+  <ng-container class = "post-review">
+    <input type="text">
+    <button>Оставить отзыв</button>
   </ng-container>
 </ng-container>
