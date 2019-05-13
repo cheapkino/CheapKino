@@ -22,4 +22,5 @@ urlpatterns = [
     path('movie/', include('movie.urls')),
     path('user/', include('user.urls')),
     path('session/', include('session.urls')),
+    path('', include('main.urls')),
 ]
