@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
 import {MainService} from './main.service';
 import {HttpClient} from '@angular/common/http';
-import {Cinema, Session} from '../models/cinema';
+import {Cinema, Seat, Session} from '../models/cinema';
 import {Token} from '../models/user';
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class ProviderService extends MainService {
   public movieForSession: Movie;
   public cinemaForSession: Cinema;
   public sessionForReserve: Session;
+  public seatForReserve: Seat;
   public username: string;
   public logged = false;
   constructor(http: HttpClient) {
@@ -57,6 +58,10 @@ export class ProviderService extends MainService {
     return this.post('http://localhost:8000/user/logout/', {});
   }
 
+  getPrice(session: Session): Promise<any> {
+    return this.get(`http://localhost:8000/session/${session.id}/cheap/`, {});
+  }
+
   setSessionForReserve(session: Session) {
     this.sessionForReserve = session;
     localStorage.setItem('sessionForReserve', JSON.stringify(session));
@@ -77,6 +82,11 @@ export class ProviderService extends MainService {
     localStorage.setItem('cinemaForSession', JSON.stringify(cinema));
   }
 
+  setSeatForReserve(seat: Seat) {
+    this.seatForReserve = seat;
+    localStorage.setItem('seatForReserve', JSON.stringify(seat));
+  }
+
   getMovieForSession() {
     return this.movieForSession;
   }
@@ -94,7 +104,15 @@ export class ProviderService extends MainService {
   }
 
   getSeats(session: Session): Promise<any> {
-    return this.get('http://localhost:8000/session' + session.id + '/reserve/',  {});
+    return this.get('http://localhost:8000/session/' + session.id + '/reserve/',  {});
+  }
+
+  getSeatForReserve(): Seat {
+    return this.seatForReserve;
+  }
+
+  reserveSeat(session: Session, seat: Seat) {
+    return this.put(`http://localhost:8000/session/${session.id}/reserve/${seat.id}/`, seat);
   }
 
 }

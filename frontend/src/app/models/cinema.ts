@@ -33,9 +33,10 @@ export interface Session {
   hall: Hall;
 }
 
-export interface Seats {
+export interface Seat {
   id: number;
   user: User;
   seat: number;
   session: number;
 }
+

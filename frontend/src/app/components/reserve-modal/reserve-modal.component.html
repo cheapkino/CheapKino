@@ -1,0 +1,23 @@
+<div class="reserveComponent">
+  <div class="reserve-content">
+      <div class="description">
+          <div class="desc-left">
+            <div>Кинотеатр: {{session.hall.cinema.name}}</div>
+            <div>Зал:  {{session.hall.name}}</div>
+            <div>Фильм: {{session.movie.title}}</div>
+            <div>Время сенса: {{session.date}}</div>
+            <div>Тип билета: {{option}}</div>
+            <div>Цена: {{getPrice()}} </div>
+          </div>
+          <div class="desc-right">
+            <h1>Льготный тип билета: </h1>
+            <select name="price option" id="price" class="option" [(ngModel)] = "option">
+              <option value="Взрослый">Взрослый</option>
+              <option value="Студенческий">Студенческий</option>
+              <option value="Детский">Детский</option>
+            </select>
+          </div>
+      </div>
+      <button class = "reserve__button" (click)="reserveSeat()">Забронировать</button>
+  </div>
+</div>

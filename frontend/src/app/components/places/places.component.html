@@ -3,7 +3,8 @@
   <div class="row" *ngFor="let row of seats; let i = index" [attr.data-index] = "i">
     <h5>Ряд {{i + 1}}: </h5>
     <div class="column" *ngFor="let seat of row; let j = index" [attr.data-index] = "j">
-      <button id="{{i + '+' + j}}">{{ j + 1 }}</button>
+      <button   *ngIf="isReserved(seat)" class = "disabled" disabled>{{ j + 1 }}</button>
+      <button  (click)="reserveSeat(seat)" *ngIf="!isReserved(seat)">{{ j + 1 }}</button>
     </div>
   </div>
 </div>

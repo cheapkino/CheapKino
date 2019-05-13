@@ -1,0 +1,45 @@
+.reserveComponent{
+  width: 100%;
+  height: 70vh;
+}
+
+.reserve-content{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  box-sizing: border-box;
+  background-color: #232525;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid #a2dc4d;
+  color: #FFF;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.description{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.option{
+  width: 100px;
+  height: 50px;
+  color: #FFF;
+  background-color: #232525;
+  border: 1px solid #a2dc4d;
+}
+
+.reserve__button{
+  width: 150px;
+  height: 50px;
+  background: #a2dc4d;
+  border: 2px solid #f0f0f0;
+  border-radius: 3px;
+  color: #f0f0f0;
+}

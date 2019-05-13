@@ -27,6 +27,9 @@ export class SessionsComponent implements OnInit {
     }
     this.provider.getSessions(this.movie).then(res => {
         this.sessions = res;
+        this.sessions.forEach( item => {
+          this.getPrice(item);
+        });
     });
 
   }
@@ -49,5 +52,13 @@ export class SessionsComponent implements OnInit {
 
   buyLink(session: Session) {
       this.provider.setSessionForReserve(session);
+  }
+
+  getPrice(session: Session) {
+    this.provider.getPrice(session).then(res => {
+          session.price = res.price;
+          session.price_child = res.price_child;
+          session.price_student = res.price_student;
+    });
   }
 }

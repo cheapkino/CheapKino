@@ -31,3 +31,8 @@ button{
   font-size: 30px;
   margin: 20px;
 }
+
+.disabled{
+  background-color: crimson;
+  color: #f0f0f0;
+}

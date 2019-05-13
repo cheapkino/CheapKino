@@ -10,6 +10,7 @@ import {ModalComponent} from './components/modal/modal.component';
 import {LoginComponent} from './components/login/login.component';
 import {PlacesComponent} from './components/places/places.component';
 import {CinemaAdminComponent} from './components/cinema-admin/cinema-admin.component';
+import {ReserveModalComponent} from './components/reserve-modal/reserve-modal.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'places',
         component: PlacesComponent
+      },
+      {
+        path: 'reserveSeat',
+        component: ReserveModalComponent
       }
     ]
   },
