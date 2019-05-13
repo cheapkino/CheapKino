@@ -4,12 +4,13 @@ import {MainService} from './main.service';
 import {HttpClient} from '@angular/common/http';
 import {Cinema, Seat, Session} from '../models/cinema';
 import {Token} from '../models/user';
-
+import * as moment from 'moment';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProviderService extends MainService {
   public detailedMovie: Movie;
   public movieForSession: Movie;
@@ -22,16 +23,29 @@ export class ProviderService extends MainService {
     super(http);
   }
 
+   formatDateForDjango(date: Date) {
+    const time =  moment(date).format('YYYY-MM-DDThh:mm');
+    return time;
+  }
+
   getMe() {
     return this.get('http://localhost:8000/user/me/', {});
   }
 
   putReview(review: Review): Promise<any> {
-    return this.get(`http://localhost:8000/movie/${review.movie.id}/review/${review.id}/`, review);
+    return this.put(`http://localhost:8000/movie/${review.movie}/review/${review.id}/`, review);
   }
 
   deleteReview(review: Review): Promise<any> {
-    return this.delet(`http://localhost:8000/movie/${review.movie.id}/review/${review.id}/`, {});
+    return this.delet(`http://localhost:8000/movie/${review.movie}/review/${review.id}/`, {});
+  }
+
+  postReview(moviE: Movie, texT: string): Promise<any> {
+    return this.post(`http://localhost:8000/movie/${moviE.id}/review/`, {
+      text: texT,
+      movie: moviE.id,
+      post_date: this.formatDateForDjango(new Date())
+    });
   }
 
   getMovies(): Promise<any> {

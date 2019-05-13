@@ -1,22 +1,26 @@
-<ng-container class="reviewsContent">
-  <ng-container class="reviews" *ngFor = "let review of reviews">
-    <div>
-      <div>{{review.owner.username}}</div>
-      <div>{{review.post_date}}</div>
+<div class="reviewsContent">
+  <div class="reviews-inner" *ngFor = "let review of reviews">
+    <div class="review-content">
+      <div class = "review-header">
+        <div class = "header-element"><span class = "header-green">Пользователь:</span> {{review.review.owner.username}}</div>
+        <div class = "header-element"><span class = "header-green">Дата добавления поста:</span> {{review.review.post_date}}</div>
+      </div>
+      <div *ngIf="review.review.owner.username === username" class = "review-body">
+        <div *ngIf="!review.onEdit" class = "comment">{{review.review.text}}</div>
+        <input type="text" *ngIf="review.onEdit" [(ngModel)]="review.review.text"  class = "comment input" >
+        <div class="buttons">
+          <button *ngIf="!review.onEdit" (click)="flipEditable(review)" class = "button">Изменить</button>
+          <button *ngIf="review.onEdit" (click)="onSave(review)" class = "button">Сохранить</button>
+          <button (click)="deleteReview(review)" class = "button">Удалить</button>
+        </div>
+      </div>
+      <div *ngIf="review.review.owner.username !== username" class = "review-body">
+        <div  class = "comment">{{review.review.text}}</div>
+      </div>
     </div>
-    <div *ngIf="review.owner.username === username">
-      <div *ngIf="!isEditable">{{review.text}}</div>
-      <input type="text" *ngIf="isEditable" [(ngModel)]="review.text">
-      <button *ngIf="!isEditable" (click)="flipEditable()">Изменить</button>
-      <button *ngIf="isEditable" (click)="onSave(review)">Сохранить</button>
-      <button (click)="deleteReview(review)">Удалить</button>
-    </div>
-    <div *ngIf="review.owner.username !== username">
-      <div>{{review.text}}</div>
-    </div>
-  </ng-container>
-  <ng-container class = "post-review">
-    <input type="text">
-    <button>Оставить отзыв</button>
-  </ng-container>
-</ng-container>
+  </div>
+  <div class = "post-review" *ngIf="username">
+    <input type="text" [(ngModel)]="userText" class ="createInput">
+    <button (click)="postReview()" class = "button create-bttn">Оставить отзыв</button>
+  </div>
+</div>
