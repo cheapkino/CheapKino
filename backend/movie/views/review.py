@@ -11,7 +11,7 @@ from movie.permissions import IsOwner
 class ReviewsView(generics.ListCreateAPIView):
 
     def get_queryset(self):
-        return Review.objects.all()
+        return Review.objects.filter(movie=self.kwargs['pk'])
 
     def get_serializer_class(self):
         return ReviewSerializer
@@ -33,7 +33,7 @@ class ReviewsView(generics.ListCreateAPIView):
 class ReviewView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
-        return Review.objects.all()
+        return Review.objects.filter(id=self.kwargs['pk'], movie=self.kwargs['pk2'])
 
     def get_serializer_class(self):
         return ReviewSerializer
