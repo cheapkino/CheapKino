@@ -1,7 +1,9 @@
 <h1>Cheapkino</h1>
 <p>Sometimes in some movie sessions in cinemas many seats remain free, and it is not profitable for cinema. So we created our web site called "Cheapkino", that will be fix that kind of problem.</p>
 <h2>How it works?</h2> 
-<p>Will be added later</p>
+<p>We evaluated speacial
+                formula that estimates rating and reserved seats on sessions. This formula
+                calculates comfortable price for session. It's profitable for clients and cinemas!</p>
 <h2>Contributing</h2>
 <p>Any contributions are welcome.</p>
 <h2>Created by</h2>
