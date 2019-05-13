@@ -35,7 +35,8 @@ class MovieSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     owner = UserSerializer(read_only=True)
-
+    movie = MovieSerializer()
+    
     class Meta:
         model = Review
         fields = ('id', 'post_date', 'text', 'movie', 'owner', )

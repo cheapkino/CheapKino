@@ -22,6 +22,18 @@ export class ProviderService extends MainService {
     super(http);
   }
 
+  getMe() {
+    return this.get('http://localhost:8000/user/me/', {});
+  }
+
+  putReview(review: Review): Promise<any> {
+    return this.get(`http://localhost:8000/movie/${review.movie.id}/review/${review.id}/`, review);
+  }
+
+  deleteReview(review: Review): Promise<any> {
+    return this.delet(`http://localhost:8000/movie/${review.movie.id}/review/${review.id}/`, {});
+  }
+
   getMovies(): Promise<any> {
     return this.get('http://localhost:8000/movie/', {});
   }
