@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
         this.provider.login(this.username, this.password).then( res => {
             localStorage.setItem('token', res.token);
             this.provider.logged = true;
+            this.isAdmin();
             this.provider.username = this.username;
             alert('Добро пожаловать!');
             this.router.navigateByUrl('');
@@ -36,5 +37,11 @@ export class LoginComponent implements OnInit {
         });
 
     }
+  }
+
+  isAdmin() {
+    this.provider.getMe().then( res => {
+      this.provider.isAdmin = res.is_superuser;
+    });
   }
 }

@@ -11,7 +11,8 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private provider: ProviderService) { }
   @Input()
   public loggedIn;
-
+  @Input()
+  public isSuperUser;
   ngOnInit() {
       const hm = document.getElementById('hamburger');
       const mobileNav = document.getElementById('nav-mobile');
@@ -25,7 +26,6 @@ export class HeaderComponent implements OnInit {
         }
       };
       hm.addEventListener('click', showMenu);
-
   }
 
   signUp() {
@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
     this.provider.logout().then(res => {
       localStorage.removeItem('token');
       this.provider.logged = false;
+      this.provider.isAdmin = false;
       this.router.navigateByUrl('').then();
     });
   }

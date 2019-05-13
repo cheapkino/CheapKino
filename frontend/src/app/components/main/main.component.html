@@ -1,5 +1,5 @@
 <div class="MainComponent">
-  <app-header [loggedIn]="getLoginStatus()"></app-header>
+  <app-header [loggedIn]="getLoginStatus()" [isSuperUser]="getAdminStatus()"></app-header>
   <div class = "mainContent">
     <router-outlet></router-outlet>
   </div>

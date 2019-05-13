@@ -2,7 +2,8 @@
   <div class="header-top">
     <a class = "logo" href="#">CheapKino</a>
     <nav class = "nav">
-      <a class = "nav__link nav__link_active" href="#">Главная</a>
+      <a class = "nav__link nav__link_active" routerLink="">Главная</a>
+      <a class = "nav__link nav__link_active" routerLink="admin" *ngIf="isSuperUser">Страница администратора</a>
       <a class = "nav__link nav__link_bordered" (click)="signUp()" id = "signUp" *ngIf="!loggedIn">Регистрация</a>
       <a class = "nav__link nav__link_bordered" (click)="login()" *ngIf="!loggedIn">Войти</a>
       <a class = "nav__link nav__link_bordered" routerLink="" *ngIf="loggedIn"  (click)="logout()">Выйти</a>
@@ -14,7 +15,8 @@
       <i class = "icon-menu icon-menu-mobile" id = "hamburger"></i>
     </div>
     <nav class = "nav-mobile" id = "nav-mobile">
-      <a class = "nav__link nav__link_mobile" href="#">Главная</a>
+      <a class = "nav__link nav__link_mobile" routerLink="">Главная</a>
+      <a class = "nav__link nav__link_mobile" routerLink="admin" *ngIf="isSuperUser">Страница администратора</a>
       <a class = "nav__link nav__link_mobile" (click)="signUp()" id = "signUpMobile" *ngIf="!loggedIn">Регистрация</a>
       <a class = "nav__link nav__link_mobile" (click)="login()" *ngIf="!loggedIn">Войти</a>
       <a class = "nav__link nav__link_mobile" *ngIf="loggedIn" (click) = "logout()">Выйти</a>

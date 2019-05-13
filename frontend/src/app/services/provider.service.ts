@@ -19,11 +19,13 @@ export class ProviderService extends MainService {
   public seatForReserve: Seat;
   public username: string;
   public logged = false;
+  public isAdmin = false;
+
   constructor(http: HttpClient) {
     super(http);
   }
 
-   formatDateForDjango(date: Date) {
+  formatDateForDjango(date: Date) {
     const time =  moment(date).format('YYYY-MM-DDThh:mm');
     return time;
   }
@@ -153,7 +155,7 @@ export class ProviderService extends MainService {
   }
 
   createSession(session: Session, movie_id: number, hall_id: number) {
-    return this.post("http://localhost:8000/session/", {
+    return this.post('http://localhost:8000/session/', {
       date: session.date,
       price: session.price,
       price_student: session.price_student,
