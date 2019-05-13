@@ -5,7 +5,7 @@ from movie.models import Movie
 from cinema.models import Hall
 
 from movie.serializers import MovieSerializer
-from cinema.serializers import HallSerializer
+from cinema.serializers import HallSerializer, SeatSerializer
 from user.serializers import UserSerializer
 
 
@@ -46,6 +46,8 @@ class SessionSerializer(serializers.ModelSerializer):
 
 class ReserveSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+    seat = SeatSerializer(read_only=True)
+    session = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = SeatReserve

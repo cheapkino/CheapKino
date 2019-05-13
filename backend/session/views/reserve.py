@@ -10,7 +10,7 @@ from session.serializers import ReserveSerializer
 class ReservesView(generics.ListAPIView):
 
     def get_queryset(self):
-        return SeatReserve.objects.all()
+        return SeatReserve.objects.filter(session=self.kwargs['pk'])
 
     def get_serializer_class(self):
         return ReserveSerializer
@@ -29,7 +29,7 @@ class ReservesView(generics.ListAPIView):
 class ReserveView(generics.UpdateAPIView):
 
     def get_queryset(self):
-        return SeatReserve.objects.all()
+        return SeatReserve.objects.filter(id=self.kwargs['pk'], session=self.kwargs['pk2'])
 
     def get_serializer_class(self):
         return ReserveSerializer
