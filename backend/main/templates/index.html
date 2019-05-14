@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
+
 {% block body %}
-    <div class="block1" style="display: flex;background: #232525; height: 150px; justify-content: center;
-align-items: center">
+    <div class="header" style="display: flex; background: #232525; height: 150px; justify-content: center;
+    align-items: center">
         <h1 style="font-size:52px; color: #FFF;"><b>CHEAPKINO</b></h1>
     </div>
 
@@ -17,6 +18,188 @@ align-items: center; flex-direction: column;">
                 "Cheapkino", that will be fix that kind of problem. How it works? We evaluated special
                 formula that estimates rating and reserved seats on sessions. This formula
                 calculates comfortable price for session. It's profitable for clients and cinemas!</p>
+        </div>
+    </div>
+
+    <div class="urls" style="">
+        <div class="inner_urls" style="width: 80%; height: 80%; background-color: #FFF; font-size: 18px;">
+            <div class="main app" style="height: 100px;">
+                <div class="heading">
+                    MAIN APP
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/
+                    </div>
+                    <div class="description">
+                        Home page of Django
+                    </div>
+                </div>
+            </div>
+            <div class="movie app" style="height: 250px;">
+                <div class="heading">
+                    CINEMA APP
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/cinema/
+                    </div>
+                    <div class="description">
+                        List and Create cinemas
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/cinema/1/
+                    </div>
+                    <div class="description">
+                        Retrieve, Update and Delete single cinema
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/cinema/1/hall/
+                    </div>
+                    <div class="description">
+                        List and Create halls of cinemas
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/cinema/1/hall/2/
+                    </div>
+                    <div class="description">
+                        Retrieve, Update and Delete single hall of cinema
+                    </div>
+                </div>
+            </div>
+            <div class="session app" style="height: 250px;">
+                <div class="heading">
+                    MOVIE APP
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/movie/
+                    </div>
+                    <div class="description">
+                        List and Create movies
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/movie/1/
+                    </div>
+                    <div class="description">
+                        Retrieve, Update and Delete single movie
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/movie/1/review/
+                    </div>
+                    <div class="description">
+                        List and Create reviews of movie
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/cinema/1/hall/2/
+                    </div>
+                    <div class="description">
+                        Retrieve, Update and Delete single review of movie
+                    </div>
+                </div>
+            </div>
+            <div class="cinema app" style="height: 300px">
+                <div class="heading">
+                    SESSION APP
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/session/
+                    </div>
+                    <div class="description">
+                        List and Create session
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/session/1/
+                    </div>
+                    <div class="description">
+                        Retrieve, Update and Delete single session
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/session/1/reserve/
+                    </div>
+                    <div class="description">
+                        List and Create reserved seats of session
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/session/1/reserve/2/
+                    </div>
+                    <div class="description">
+                        Retrieve, Update and Delete single reserved seat of session
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/session/1/cheap/
+                    </div>
+                    <div class="description">
+                        Calculate lowed prices for single session
+                    </div>
+                </div>
+            </div>
+            <div class="user app" style="height: 300px">
+                <div class="heading">
+                    USER APP
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/user/
+                    </div>
+                    <div class="description">
+                        List users
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/user/register/
+                    </div>
+                    <div class="description">
+                        Create users
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/user/login/
+                    </div>
+                    <div class="description">
+                        Login single user
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/user/logout/
+                    </div>
+                    <div class="description">
+                        Logout single user
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="url">
+                        localhost:8000/user/me/
+                    </div>
+                    <div class="description">
+                        Retrieve current user
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
