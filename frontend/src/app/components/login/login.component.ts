@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
             this.provider.username = this.username;
             alert('Добро пожаловать!');
             this.router.navigateByUrl('');
-        }).catch( res => {
+        })
+        .catch( res => {
             alert('You may mistyped your login or password. Try again!');
             this.username = '';
             this.password = '';

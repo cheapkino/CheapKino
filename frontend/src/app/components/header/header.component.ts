@@ -36,6 +36,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('Login').then();
   }
 
+  admin() {
+    this.router.navigateByUrl('admin').then();
+  }
   logout() {
     this.provider.logout().then(res => {
       localStorage.removeItem('token');

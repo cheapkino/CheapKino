@@ -1,41 +1,67 @@
 <div class="cinema-admin">
-  <div class="session">
-    <div class="date">
-      <label for=""></label>
-      <input type="text" [(ngModel)]='year' id = "">
-      <input type="text" [(ngModel)]='month' id = "">
-      <input type="text" [(ngModel)]='day'>
-      <input type="text" [(ngModel)]='hour'>
-      <input type="text" [(ngModel)]='minute'>
-    </div>
-    <div class="price">
-      <input type="text" [(ngModel)]='session.price'>
-      <input type="text" [(ngModel)]='session.price_student'>
-      <input type="text" [(ngModel)]='session.price_child'>
-    </div>
-    <div *ngIf='cinemas' class="hall">
-      <select style="width: 250px" [(ngModel)]='currentCinema'>
-        <option *ngFor='let cinema of cinemas' (click)='selectCinema(cinema)' value="cinema">
-          {{cinema.name}}
-        </option>
-      </select>
-      <select *ngIf='currentCinema' style="width: 250px" [(ngModel)]='currentHall'>
-        <option *ngFor='let hall of halls' value="hall" (click)='selectHall(hall.id)'>
-          {{hall.name}}
-        </option>
+  <div class="session-time session">
+    <div>
+      <label for="year">Год: </label>
+      <select name="month" id="year" [(ngModel)]="year">
+        <option *ngFor = "let year of years" [value]="year">{{year}}</option>
       </select>
     </div>
-    <div *ngIf='movies' class="movie">
-      <select style="width: 250px" [(ngModel)]='currentMovie'>
-        <option *ngFor='let movie of movies' value="movie" (click)='selectMovie(movie.id)'>
-          {{movie.title}}
-        </option>
+    <div>
+      <label for="month">Месяц: </label>
+      <select name="month" id="month" [(ngModel)]="month">
+        <option *ngFor = "let month of months" [value]="month">{{month}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="day">День: </label>
+      <select name="day" id="day" [(ngModel)]="day">
+        <option *ngFor = "let day of days" [value]="day">{{day}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="hour">Часы: </label>
+      <select name="hour" id="hour" [(ngModel)]="hour">
+        <option *ngFor = "let hour of hours" [value]="hour">{{hour}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="minute">Минуты: </label>
+      <select name="minute" id="minute" [(ngModel)]="minute">
+        <option *ngFor = "let minute of minutes" [value]="minute">{{minute}}</option>
       </select>
     </div>
   </div>
-  <div class="create_session">
-    <div class="go" (click)='createSession()'>
-      CREATE
+  <div class="session-price session">
+    <div>
+        <label for="forChildren">Детский билет: </label>
+        <input type="text" [(ngModel)]="forChildren" id = "forChildren" class = "input">
     </div>
+    <div>
+        <label for="forStudents">Студенческий билет: </label>
+        <input type="text" [(ngModel)]="forStudents" id = "forStudents" class = "input">
+    </div>
+    <div>
+        <label for="forAdults">Взрослый билет: </label>
+        <input type="text" [(ngModel)]="forAdults" id = "forAdults" class = "input">
+    </div>
+  </div>
+  <div class="session-place session">
+    <label for="cinema">Кинотеатр: </label>
+    <select name="cinema" id="cinema" [(ngModel)]="currentCinemaId" (change)="getHalls()">
+      <option *ngFor = "let cinema of cinemas" [value]="cinema.id">{{cinema.name}}</option>
+    </select>
+    <label *ngIf="currentCinemaId" for="hall">Зал: </label>
+    <select *ngIf="currentCinemaId" name="hall" id="hall" [(ngModel)]="currentHallId">
+      <option *ngFor = "let hall of halls" [value]="hall.id">{{hall.name}}</option>
+    </select>
+  </div>
+  <div class="session-movie session">
+    <label for="cinema">Фильм: </label>
+    <select name="movie" id="movie" [(ngModel)]="currentMovieId">
+      <option *ngFor = "let movie of movies" [value]="movie.id">{{movie.title}}</option>
+    </select>
+  </div>
+  <div class ="bttn-container">
+    <button (click)="createSession()" class = "button">Добавить сеанс</button>
   </div>
 </div>

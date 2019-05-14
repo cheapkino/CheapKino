@@ -58,6 +58,9 @@ export class ProviderService extends MainService {
     return this.get('http://localhost:8000/cinema/', {});
   }
 
+  getCinema(id: number): Promise<Cinema>{
+    return this.get(`http://localhost:8000/cinema/${id}`, {});
+  }
   getSessions(movie: Movie): Promise<any> {
     return this.get('http://localhost:8000/session/?movie=' + movie.id, {});
   }

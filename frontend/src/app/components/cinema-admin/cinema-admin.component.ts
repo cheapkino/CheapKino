@@ -10,7 +10,29 @@ import { MovieComponent } from '../movie/movie.component';
   styleUrls: ['./cinema-admin.component.css']
 })
 export class CinemaAdminComponent implements OnInit {
-  session: Session = {
+
+
+  constructor(private provider: ProviderService) { }
+  public years = [2019, 2020, 2021];
+  public months = this.getMonth();
+  public days = this.getDays();
+  public hours = this.getHours();
+  public minutes = this.getMinutes();
+  public forChildren: string;
+  public forStudents: string;
+  public forAdults: string;
+  public cinemas: Cinema[] = [];
+  public halls: Hall[] = [];
+  public movies: Movie[] = [];
+  public year;
+  public month;
+  public day;
+  public hour;
+  public minute;
+  public currentCinemaId: number;
+  public currentHallId: number;
+  public currentMovieId: number;
+  public session: Session = {
     id: -1,
     date: new Date(),
     price: 0,
@@ -20,83 +42,64 @@ export class CinemaAdminComponent implements OnInit {
     hall: null,
     cinema: null
   };
-
-  id: number = -1;
-
-  cinemas: Cinema[];
-  currentCinema: string;
-
-  halls: Hall[];
-  currentHall: string;
-
-  movies: Movie[];
-  currentMovie: string;
-
-  hall_id: number;
-  movie_id: number;
-
-  year: number = 0;
-  month: number = 0;
-  day: number = 0;
-  hour: number = 0;
-  minute: number = 0;
-
-  constructor(private provider: ProviderService) { }
-
   ngOnInit() {
-    this.getCinemas();
-    this.getMovies();
+      this.provider.getCinemas().then( res => {
+        this.cinemas = res;
+      });
+      this.provider.getMovies().then( res => {
+        this.movies = res.results;
+      });
   }
 
-  getCinemas() {
-    this.provider.getCinemas().then(res => {
-      this.cinemas = res;
-
-      console.log(res);
-    });
+  getMonth() {
+    const arr = [];
+    for (let i = 1; i <= 12; i++) {
+      arr.push(i);
+    }
+    return arr;
   }
 
-  getHalls(cinema: Cinema) {
-    this.provider.getHallsByCinema(cinema).then(res => {
-      this.halls = res;
-
-      console.log(res);
-    });
+  getDays() {
+    const arr = [];
+    for (let i = 1; i <= 31; i++) {
+      arr.push(i);
+    }
+    return arr;
   }
 
-  selectCinema(cinema: Cinema) {
-    if (cinema) {
-      this.getHalls(cinema);    
+  getHours() {
+    const arr = [];
+    for (let i = 0; i <= 23; i++) {
+      arr.push(i);
+    }
+    return arr;
+  }
+
+  getMinutes() {
+    const arr = [];
+    for (let i = 0; i <= 59; i++) {
+      arr.push(i);
+    }
+    return arr;
+  }
+
+  getHalls() {
+    if (this.currentCinemaId) {
+      this.provider.getCinema(this.currentCinemaId).then(res => {
+        this.provider.getHallsByCinema(res).then(r => {
+          this.halls = r;
+        });
+      });
     }
   }
 
-  getMovies() {
-    this.provider.getMovies().then(res => {
-      this.movies = res.results;
-      
-      console.log(res.results);
-    });
-  }
-
-  selectHall(hall_id: number) {
-    this.hall_id = hall_id;
-  }
-  
-  selectMovie(movie_id: number) {
-    this.movie_id = movie_id;
-  }
-
   createSession() {
-    this.session.date = new Date(this.year, this.month, this.day, this.hour, this.minute, 0, 0);
-    
-
-
-    // console.log(this.);
-    // console.log(this.currentHall);
-
-    this.provider.createSession(this.session, this.movie_id, this.hall_id).then(res => {
-      console.log('session created!');
+    this.session.date = new Date(this.year, --this.month, this.day, this.hour, this.minute, 0, 0);
+    this.session.price_child = Number(this.forChildren);
+    this.session.price_student = Number(this.forStudents);
+    this.session.price = Number(this.forAdults);
+    this.provider.createSession(this.session, this.currentMovieId, this.currentHallId).then(res => {
+      alert('Сессия добавлена!');
     });
   }
-
 }

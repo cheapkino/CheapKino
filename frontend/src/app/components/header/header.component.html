@@ -3,7 +3,7 @@
     <a class = "logo" href="#">CheapKino</a>
     <nav class = "nav">
       <a class = "nav__link nav__link_active" routerLink="">Главная</a>
-      <a class = "nav__link nav__link_active" routerLink="admin" *ngIf="isSuperUser">Страница администратора</a>
+      <a class = "nav__link nav__link_active" (click)="admin()" *ngIf="isSuperUser">Страница администратора</a>
       <a class = "nav__link nav__link_bordered" (click)="signUp()" id = "signUp" *ngIf="!loggedIn">Регистрация</a>
       <a class = "nav__link nav__link_bordered" (click)="login()" *ngIf="!loggedIn">Войти</a>
       <a class = "nav__link nav__link_bordered" routerLink="" *ngIf="loggedIn"  (click)="logout()">Выйти</a>
