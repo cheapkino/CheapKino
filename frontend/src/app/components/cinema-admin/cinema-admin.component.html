@@ -46,14 +46,18 @@
     </div>
   </div>
   <div class="session-place session">
-    <label for="cinema">Кинотеатр: </label>
-    <select name="cinema" id="cinema" [(ngModel)]="currentCinemaId" (change)="getHalls()">
-      <option *ngFor = "let cinema of cinemas" [value]="cinema.id">{{cinema.name}}</option>
-    </select>
-    <label *ngIf="currentCinemaId" for="hall">Зал: </label>
-    <select *ngIf="currentCinemaId" name="hall" id="hall" [(ngModel)]="currentHallId">
-      <option *ngFor = "let hall of halls" [value]="hall.id">{{hall.name}}</option>
-    </select>
+    <div>
+      <label for="cinema">Кинотеатр: </label>
+      <select name="cinema" id="cinema" [(ngModel)]="currentCinemaId" (change)="getHalls()">
+        <option *ngFor = "let cinema of cinemas" [value]="cinema.id">{{cinema.name}}</option>
+      </select>
+    </div>
+    <div>
+      <label *ngIf="currentCinemaId" for="hall">Зал: </label>
+      <select *ngIf="currentCinemaId" name="hall" id="hall" [(ngModel)]="currentHallId">
+        <option *ngFor = "let hall of halls" [value]="hall.id">{{hall.name}}</option>
+      </select>
+    </div>
   </div>
   <div class="session-movie session">
     <label for="cinema">Фильм: </label>

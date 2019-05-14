@@ -44,3 +44,10 @@
   border-radius: 3px;
   font-size: 16px;
 }
+.session-place{
+  display: flex;
+  justify-content: flex-start;
+}
+.session-place div{
+  margin-right: 10px;
+}
