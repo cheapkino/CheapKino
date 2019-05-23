@@ -1,0 +1,1001 @@
+{
+	"info": {
+		"_postman_id": "84dde9dc-adfd-44a8-b285-66b4d2d96a2e",
+		"name": "Cheap Kino",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"mebr8\",\n\t\"password\": \"qweqwe\",\n\t\"groups\": [1]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/user/register/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"register",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "log",
+					"item": [
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8721cfd7-a2b4-4bdf-a15d-dc44959e7a83",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"pm.globals.set(\"token\", data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"mebr2\",\n\t\"password\": \"qwe\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/user/login/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"login",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/logout/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"logout",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user/me/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cinema",
+			"item": [
+				{
+					"name": "cinemas",
+					"item": [
+						{
+							"name": "cinemas",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Chaplin MEGA Park\",\n\t\"address\": \"Seifullina\",\n\t\"city_id\": 1\n}"
+								},
+								"url": {
+									"raw": "{{url}}/cinema/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cinemas",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/cinema/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4204f477-48c1-4558-82ca-4d35b3f487d1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3429a0cb-2e05-4ba8-92e2-dfbbd3e30ded",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "city",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "cinema",
+					"item": [
+						{
+							"name": "cinema",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/cinema/13/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										"13",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cinema",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Arman Laser Cinema\",\n    \"address\": \"г. Тараз, ТРЦ «Mart», ул. Толе би, 27\",\n    \"city_id\": 4\n}"
+								},
+								"url": {
+									"raw": "{{url}}/cinema/13/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										"13",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cinema",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/cinema/13/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										"13",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "halls",
+					"item": [
+						{
+							"name": "halls",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/cinema/7/hall/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										"7",
+										"hall",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "halls",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cinema\": {\n        \"id\": 7,\n        \"name\": \"Chaplin ADK 3D\",\n        \"address\": \"г. Алматы, ул. Сатпаева, 90 (уг. ул. Тлендиева) ТРК АDК, 2-й этаж\",\n        \"city\": 1\n    },\n    \"name\": \"Зал 5\",\n    \"length\": 5,\n    \"width\": 4\n}"
+								},
+								"url": {
+									"raw": "{{url}}/cinema/7/hall/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										"7",
+										"hall",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "hall",
+					"item": [
+						{
+							"name": "hall",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/cinema/7/hall/10/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"cinema",
+										"7",
+										"hall",
+										"10",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "movie",
+			"item": [
+				{
+					"name": "movies",
+					"item": [
+						{
+							"name": "movies",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"poster\": \"Aza\",\n\t\"title\": \"Aza\",\n\t\"description\": \"werqweq\",\n\t\"premiere\": \"2011-02-12\",\n\t\"duration\": 90,\n\t\"rating\": 2.5,\n\t\"genre_id\": 2\n}"
+								},
+								"url": {
+									"raw": "{{url}}/movie/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movies (top rating)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/movie/?ordering=-rating",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										""
+									],
+									"query": [
+										{
+											"key": "ordering",
+											"value": "-rating"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movies (recent)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/movie/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										""
+									]
+								},
+								"description": "pulls movies list ordered by premiere date (desc) and title (asc), page_size is 10"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "movie",
+					"item": [
+						{
+							"name": "movie",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/movie/1/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "reviews",
+					"item": [
+						{
+							"name": "reviews",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/movie/15/review/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"15",
+										"review",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviews",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"post_date\": \"2019-04-25T04:31:17Z\",\n\t\"text\": \"Really good movie\",\n\t\"movie\": 15\n}"
+								},
+								"url": {
+									"raw": "{{url}}/movie/15/review/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"15",
+										"review",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "review",
+					"item": [
+						{
+							"name": "review",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/movie/15/review/1/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"15",
+										"review",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "review",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"post_date\": \"2019-04-25T04:31:17Z\",\n    \"text\": \"its min2\",\n    \"movie\": 15\n}"
+								},
+								"url": {
+									"raw": "{{url}}/movie/15/review/3/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"15",
+										"review",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "review",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"post_date\": \"2019-04-25T04:31:17Z\",\n    \"text\": \"its mine\",\n    \"movie\": 15\n}"
+								},
+								"url": {
+									"raw": "{{url}}/movie/15/review/3/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"15",
+										"review",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "sessions",
+					"item": [
+						{
+							"name": "sessions (by cinema)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/session/?movie=12",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"session",
+										""
+									],
+									"query": [
+										{
+											"key": "movie",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sessions (by movie)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/session/?cinema=7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"session",
+										""
+									],
+									"query": [
+										{
+											"key": "cinema",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sessions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"date\": \"2019-04-30T09:36:08Z\",\n    \"price\": 900,\n    \"price_student\": 700,\n    \"price_child\": 500,\n    \"movie_id\": 12,\n    \"hall_id\": 11\n}"
+								},
+								"url": {
+									"raw": "{{url}}/session/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"session",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sessions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "session",
+					"item": [
+						{
+							"name": "session",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "reserves",
+					"item": [
+						{
+							"name": "reserves",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/session/13/reserve/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"session",
+										"13",
+										"reserve",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "reserve",
+					"item": [
+						{
+							"name": "reserve",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 42,\n    \"seat\": 2,\n    \"session\": 13\n}"
+								},
+								"url": {
+									"raw": "{{url}}/session/13/reserve/42/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"session",
+										"13",
+										"reserve",
+										"42",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "cheap",
+					"item": [
+						{
+							"name": "cheap",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/session/13/cheap/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"session",
+										"13",
+										"cheap",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

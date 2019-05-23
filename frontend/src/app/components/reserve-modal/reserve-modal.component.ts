@@ -56,6 +56,11 @@ export class ReserveModalComponent implements OnInit {
   reserveSeat() {
     this.provider.reserveSeat(this.session, this.seatForReserve).then( res => {
       console.log(res);
-    });
+      this.router.navigateByUrl('places');
+    })
+      .catch(res => {
+        alert('Упс! что-то не так!');
+        this.router.navigateByUrl('places');
+      });
   }
 }

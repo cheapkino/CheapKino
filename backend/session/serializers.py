@@ -46,8 +46,8 @@ class SessionSerializer(serializers.ModelSerializer):
 
 class ReserveSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
-    seat = SeatSerializer(read_only=True)
-    session = serializers.PrimaryKeyRelatedField(read_only=True)
+    # seat = SeatSerializer(read_only=True)
+    # session = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = SeatReserve
